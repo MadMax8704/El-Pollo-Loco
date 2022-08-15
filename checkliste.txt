@@ -1,0 +1,10 @@
+Start Screen
+Musik + Sounds
+Coins Sammeln
+Flaschen Sammeln
+Flaschen nur werfen wenn vorhanden sind
+Collision
+Endgegner besiegen
+Game Over Screen
+Fullscreen
+Erklärung
