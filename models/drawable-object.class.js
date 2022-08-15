@@ -17,15 +17,25 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof Chicken_small) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Chicken_small || this instanceof Coins || this instanceof Bottles|| this instanceof Endboss) {
         ctx.beginPath();
         ctx.lineWidth = "5";
         ctx.strokeStyle = "blue";
         ctx.rect(this.x, this.y, this.width, this.height);
         ctx.stroke();
+        
     }
     }
+    drawFrameRed(ctx) {
+    if (this instanceof Character || this instanceof Chicken || this instanceof Chicken_small || this instanceof Coins || this instanceof Bottles|| this instanceof Endboss) {
+        ctx.beginPath();
+        ctx.lineWidth = "5";
+        ctx.strokeStyle = "red";
+        ctx.rect(this.x-this.offset_x, this.y-this.offset_y, this.width-this.offset_width, this.height-this.offset_height);
+        ctx.stroke();
 
+    }    
+    }
 
     loadImages(arr) {
         arr.forEach((path) => {

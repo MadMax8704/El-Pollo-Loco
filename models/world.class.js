@@ -97,6 +97,7 @@ class World {
         }
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
+        mo.drawFrameRed(this.ctx);
         
      
         
