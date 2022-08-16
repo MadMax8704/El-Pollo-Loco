@@ -6,7 +6,6 @@ class MovableObject extends DrawableObject{
     acceleration = 1;
     energy = 100;
     lastHit = 0;
-    coins = 0;
 
 
     applyGravity() {
@@ -47,12 +46,6 @@ class MovableObject extends DrawableObject{
         }
 
         
-    }
-
-    take() {
-        this.coins += 5;
-        delete Coins();
-        console.log(coins);
     }
 
 

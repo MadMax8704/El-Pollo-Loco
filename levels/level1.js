@@ -1,5 +1,8 @@
 const level1 = new Level(
 
+    [
+        new Endboss()
+    ],
     
     [
         new Chicken(),
@@ -13,8 +16,8 @@ const level1 = new Level(
         new Chicken_small(),
         new Chicken_small(),
         new Chicken_small(),
-        new Chicken_small(),
-        new Endboss()
+        new Chicken_small()
+        
     ],
 
     [
@@ -68,16 +71,19 @@ const level1 = new Level(
         new Coins(1500,180),
 
     ],
+    
+    [
+            new Bottles( 20,340),
+            new Bottles( 340,150),
+            new Bottles( 560,340),
+            new Bottles( 800,240),
+            new Bottles( 1050,140),
 
-        [
-            new Bottles(560,340),
-            new Bottles(1360,340),
-            new Bottles( 800 * (Math.random() * 2000),340),
-            new Bottles( 800 * (Math.random() * 2000),340),
-            new Bottles( 800 * (Math.random() * 2000),340),
-            new Bottles( 800 * (Math.random() * 2000),340),
-            new Bottles( 800 * (Math.random() * 2000),340),
-            new Bottles( 800 * (Math.random() * 2000),340)
+            new Bottles( 1360 ,340),
+            new Bottles( 1500,240),
+            new Bottles( 1800,140),
+            new Bottles( 2000,340),
+            new Bottles( 2000,340),
         ]
     
 

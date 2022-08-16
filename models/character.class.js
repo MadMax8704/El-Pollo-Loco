@@ -8,6 +8,8 @@ class Character extends MovableObject {
     height = 280;
     y = 20;
     speed = 3;
+    coins = 0;
+    bottles = 0;
 
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -153,8 +155,13 @@ class Character extends MovableObject {
     jump() {
         this.speedY = 15;
     }
+    
 
-    take() {
-
+    takeCoin() {
+       return this.coins++;
     }
+
+    takeBottle() {
+        return this.bottles++;
+     }
 }

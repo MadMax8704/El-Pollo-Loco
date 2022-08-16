@@ -33,6 +33,6 @@ class Coins extends MovableObject {
         }, 200);
 
     }
-
+    
 
 }
