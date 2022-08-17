@@ -1,9 +1,12 @@
 class Character extends MovableObject {
 
-    offset_x = -30;
-    offset_y = -120;
-    offset_width = 60;
-    offset_height = 135;
+
+    offset =  {
+        top: 120,
+        left: 20,
+        right: 40,
+        bottom: 130
+    }
 
     height = 280;
     y = 20;
@@ -75,11 +78,12 @@ class Character extends MovableObject {
         'img/2_character_pepe/4_hurt/H-42.png',
         'img/2_character_pepe/4_hurt/H-43.png'
       
-    ]
+    ];
 
 
     world;
     walking_sound = new Audio('./audio/walk.mp3');
+    jump_sound = new Audio ('./audio/jump.mp3');
 
 
     constructor() {
@@ -116,6 +120,7 @@ class Character extends MovableObject {
             if(this.world.keyboard.UP && !this.isAboveGround()) {
                 //Sprunghöhe
                 this.jump();
+                
             }
 
             this.world.camera_x = -this.x + 100;
@@ -154,6 +159,8 @@ class Character extends MovableObject {
 
     jump() {
         this.speedY = 15;
+        this.jump_sound.play();
+        
     }
     
 

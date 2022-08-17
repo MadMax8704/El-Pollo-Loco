@@ -1,10 +1,13 @@
 class Bottles extends MovableObject {
 
-    offset_x = -30;
-    offset_y = -10;
-    offset_width = 50;
-    offset_height = 20;
+    offset =  {
+        top: 15,
+        left: 25,
+        right: 35,
+        bottom: 30
+    }
     
+    bottle_take_sound = new Audio ('./audio/bottle_take.mp3');
     height = 80;
     width = 80;
     IMAGES_BOTTLES = [

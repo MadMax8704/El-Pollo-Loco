@@ -1,10 +1,13 @@
 class Coins extends MovableObject {
 
-    offset_x = -30;
-    offset_y = -30;
-    offset_width = 60;
-    offset_height = 60;
+    offset =  {
+        top: 30,
+        left: 30,
+        right: 60,
+        bottom: 60
+    }
     
+    coin_sound = new Audio ('./audio/coin_take.mp3');
     height = 100;
     width = 100;
     IMAGES_COINS = [

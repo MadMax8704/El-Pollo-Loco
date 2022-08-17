@@ -52,10 +52,18 @@ class World {
             }
         });
 
+        this.level.endboss.forEach(endboss => {
+            if (this.character.isColliding(endboss)) {
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.energy);
+            }
+        });
+
         this.level.coins.forEach((coins, i) => {
             if (this.character.isColliding(coins)) {
                 this.character.takeCoin();
                 this.level.coins.splice(i, 1);
+                coins.coin_sound.play();
                 this.statusBarCoins.setPercentage(this.character.coins);
             }
         });
@@ -64,6 +72,7 @@ class World {
             if (this.character.isColliding(bottles)) {
                 this.character.takeBottle();
                 this.level.bottles.splice(i, 1);
+                bottles.bottle_take_sound.play();
                 this.statusBarBottles.setPercentage(this.character.bottles);
             }
         });
