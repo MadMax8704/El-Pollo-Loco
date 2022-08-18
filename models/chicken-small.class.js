@@ -7,6 +7,7 @@ class Chicken_small extends MovableObject {
         bottom: 0
     }
 
+    speedY = 0;
     y = 380;
     height = 40;
     width = 40;
@@ -39,6 +40,15 @@ class Chicken_small extends MovableObject {
             this.playAnimation(this.IMAGES_WALKING);
         }, 200);
 
+        setInterval (() => {
+            this.jumpChicken();
+        },300)
+
     }
+
+    jumpChicken() {
+        this.speedY = 15;
+    }
+
 
 }

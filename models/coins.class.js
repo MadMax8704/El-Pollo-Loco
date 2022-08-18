@@ -7,7 +7,7 @@ class Coins extends MovableObject {
         bottom: 60
     }
     
-    coin_sound = new Audio ('./audio/coin_take.mp3');
+    
     height = 100;
     width = 100;
     IMAGES_COINS = [

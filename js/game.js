@@ -9,10 +9,29 @@ function init() {
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
 
+   StopMenuMusic();
+   StartGameMusic();
 
    console.log('My character is', world.character);
 
+
+
 }
+
+function StopMenuMusic() {
+
+   menu_guitar.pause();
+   menu_ambient.pause();
+       
+ };
+
+ function StartGameMusic() {
+
+   game_ambient.play();
+   game_music.play();
+
+ };
+
 
 
 window.addEventListener("keydown", (e) => {

@@ -7,7 +7,7 @@ class Bottles extends MovableObject {
         bottom: 30
     }
     
-    bottle_take_sound = new Audio ('./audio/bottle_take.mp3');
+    
     height = 80;
     width = 80;
     IMAGES_BOTTLES = [

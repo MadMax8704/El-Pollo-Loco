@@ -6,10 +6,10 @@ class Endboss extends MovableObject {
 
     
     offset =  {
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
+        top: 50,
+        left: 10,
+        right: 30,
+        bottom: 60
     };
     
     
@@ -63,7 +63,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 500;       
+        this.x = 2800;       
         this.animate(); 
         
     };
