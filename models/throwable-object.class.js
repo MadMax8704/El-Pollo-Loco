@@ -29,4 +29,5 @@ throw() {
     this.applyGravity();
     setInterval(() => { this.x += 5;} ,25);
     }
+    
 }

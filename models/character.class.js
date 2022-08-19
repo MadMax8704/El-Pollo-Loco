@@ -2,10 +2,10 @@ class Character extends MovableObject {
 
 
     offset =  {
-        top: 120,
+        top: 140,
         left: 20,
         right: 40,
-        bottom: 130
+        bottom: 160
     }
 
     height = 280;
@@ -82,8 +82,7 @@ class Character extends MovableObject {
 
 
     world;
-    walking_sound = new Audio('./audio/walk.mp3');
-    jump_sound = new Audio ('./audio/jump.mp3');
+    
 
 
     constructor() {
@@ -102,19 +101,19 @@ class Character extends MovableObject {
 
         setInterval(() => {
 
-            this.walking_sound.pause();
+            walking_sound.pause();
 
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                this.moveRight();
                this.otherDirection = false;
-               this.walking_sound.play();
+               walking_sound.play();
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
                 
-                this.walking_sound.play();
+                walking_sound.play();
             }
 
             if(this.world.keyboard.UP && !this.isAboveGround()) {
@@ -159,7 +158,7 @@ class Character extends MovableObject {
 
     jump() {
         this.speedY = 15;
-        this.jump_sound.play();
+        jump_sound.play();
         
     }
     
@@ -171,4 +170,5 @@ class Character extends MovableObject {
     takeBottle() {
         return this.bottles++;
      }
+
 }

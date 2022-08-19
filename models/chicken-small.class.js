@@ -7,6 +7,7 @@ class Chicken_small extends MovableObject {
         bottom: 0
     }
 
+    acceleration =1;
     speedY = 0;
     y = 380;
     height = 40;
@@ -27,7 +28,7 @@ class Chicken_small extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = Math.random()* 2000 + Math.random() * 500;
         this.speed = 0.25 + Math.random() * 0.25;
-
+        
         this.animate();
     }
 
@@ -47,8 +48,10 @@ class Chicken_small extends MovableObject {
     }
 
     jumpChicken() {
-        this.speedY = 15;
+        
+            
     }
+    
 
 
 }

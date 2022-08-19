@@ -39,12 +39,15 @@ class World {
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
                 this.throwableObjects.push(bottle);
                 this.character.bottles--;
+                this.statusBarBottles.setPercentage(this.character.bottles);
 
             }
         }
     }
 
     checkCollosions () {
+
+        
         this.level.enemies.forEach(enemy => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();

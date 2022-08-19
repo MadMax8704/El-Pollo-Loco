@@ -1,7 +1,5 @@
 Start Screen
 Musik + Sounds
-Coins Sammeln
-Flaschen Sammeln
 Collision
 Endgegner besiegen
 Game Over Screen
