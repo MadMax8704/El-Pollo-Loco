@@ -23,6 +23,17 @@ game_music.volume = 0.2;
 // Character Sounds
 
 walking_sound = new Audio('./audio/walk.mp3');
+walking_sound.volume = 1;
 jump_sound = new Audio ('./audio/jump.mp3');
 bottle_take_sound = new Audio ('./audio/bottle_take.mp3');
 coin_sound = new Audio ('./audio/coin_take.mp3');
+
+// Chicken Sounds
+
+let chicken_beeps_sound = new Audio('./audio/chicken_beeps.mp3');
+chicken_beeps_sound.volume = 0.2;
+
+chicken_beeps_short_sound = new Audio('./audio/chicken_beep_short.mp3');
+
+chicken_dead_sound = new Audio('./audio/chicken_dead.mp3');
+chicken_dead_sound.volume = 0.2;

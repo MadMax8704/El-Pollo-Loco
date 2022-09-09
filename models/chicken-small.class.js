@@ -1,9 +1,9 @@
 class Chicken_small extends MovableObject {
 
     offset =  {
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 10,
+        left: -10,
+        right: 10,
         bottom: 0
     }
 
@@ -12,6 +12,8 @@ class Chicken_small extends MovableObject {
     y = 380;
     height = 40;
     width = 40;
+    dead = false;
+
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -32,26 +34,27 @@ class Chicken_small extends MovableObject {
         this.animate();
     }
 
+    move;
+    walking;
+    
     animate() {
-        setInterval(() => {
+        if(!this.dead) {
+            this.move = setInterval(() => {
             this.moveLeft();   
             }, 1000 / 60);
-            
-        setInterval(() => {
+
+            this.walking =setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
         }, 200);
-
-        setInterval (() => {
-            this.jumpChicken();
-        },300)
-
-    }
-
-    jumpChicken() {
-        
-            
-    }
+    }};
     
-
-
+    enemyIsDead() {
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_DEAD);    
+        }, 200);
+        clearInterval(this.walking);
+        clearInterval(this.move);
+        
+    }
+ 
 }

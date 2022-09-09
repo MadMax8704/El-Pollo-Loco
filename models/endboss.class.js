@@ -3,13 +3,14 @@ class Endboss extends MovableObject {
     height = 300;
     width = 200;
     y = 140;
+    energy = 40;
 
     
     offset =  {
-        top: 50,
-        left: 10,
-        right: 30,
-        bottom: 60
+        top: 20,
+        left: 20,
+        right: 20,
+        bottom: 20
     };
     
     
@@ -69,9 +70,22 @@ class Endboss extends MovableObject {
     };
 
     animate() {
+
+        setInterval(() => {
+            if (world.character.x > 1800) {
+            this.playAnimation(this.IMAGES_ALERT);
+            console.log('HERE');
+            }
+        }, 200);
         
              setInterval(() => {
-            this.playAnimation(this.IMAGES_ALERT);
+            this.playAnimation(this.IMAGES_WALKING);
+        }, 200);
+
+        setInterval(() => {
+            if (this.energy < 0) {
+            this.playAnimation(this.IMAGES_DEAD);
+            }
         }, 200);
 
     }

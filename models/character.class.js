@@ -2,10 +2,10 @@ class Character extends MovableObject {
 
 
     offset =  {
-        top: 140,
-        left: 20,
-        right: 40,
-        bottom: 160
+        top: 100,
+        bottom: 10,
+        left: 40,
+        right: 30
     }
 
     height = 280;
@@ -117,6 +117,8 @@ class Character extends MovableObject {
             }
 
             if(this.world.keyboard.UP && !this.isAboveGround()) {
+                
+                
                 //Sprunghöhe
                 this.jump();
                 

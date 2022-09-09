@@ -29,37 +29,52 @@ class World {
         setInterval(() => {
             this.checkCollosions();
             this.checkThrowobjects();
-        }, 200);
+        }, 100);
     }
 
     checkThrowobjects(){
         if(this.keyboard.SPACE) {
             if (this.character.bottles > 0) {
-                
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
                 this.throwableObjects.push(bottle);
                 this.character.bottles--;
                 this.statusBarBottles.setPercentage(this.character.bottles);
-
+                
             }
         }
     }
 
     checkCollosions () {
 
-        
-        this.level.enemies.forEach(enemy => {
-            if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusBar.setPercentage(this.character.energy);
+        this.throwableObjects.forEach(bottle => {
+            if (this.level.endboss[0].isColliding(bottle)) {
+                bottle.bottleHit();
+                this.level.endboss[0].energy--;
+                console.log(this.level.endboss[0].energy);
+
             }
         });
+
+        this.level.enemies.forEach((enemy, i) => {
+            if (this.character.isColliding(enemy) ) {
+                if (!this.character.isAboveGround() && !enemy.dead){
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.energy);
+
+            }else if(this.character.isAboveGround() && !enemy.dead){
+                    enemy.dead = true;
+                    enemy.enemyIsDead();
+                    chicken_dead_sound.play();
+            }}; 
+        });
+
 
         this.level.endboss.forEach(endboss => {
             if (this.character.isColliding(endboss)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
-            }
+            };
+
         });
 
         this.level.coins.forEach((coins, i) => {
@@ -79,6 +94,8 @@ class World {
                 this.statusBarBottles.setPercentage(this.character.bottles);
             }
         });
+
+
   }
 
     draw() {
