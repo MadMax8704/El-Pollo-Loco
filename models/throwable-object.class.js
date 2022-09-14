@@ -46,13 +46,15 @@ throw() {
     }
 
 bottleHit() {
+    bottle_splash_sound.play();
     clearInterval(this.flyingBottles);
 
     setInterval(() => {
         this.playAnimation(this.IMAGE_SPLASH_BOTTLES);
+        
     }, 100);
 
-
+    
 }
 
 }

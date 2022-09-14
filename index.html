@@ -17,6 +17,7 @@
     <script src="models/status-bar.class.js"></script>
     <script src="models/status-bar-coins.class.js"></script>
     <script src="models/status-bar-bottles.class.js"></script>   
+    <script src="models/status-bar-boss.class.js"></script>
     <script src="models/world.class.js"></script>
     <script src="models/background-object.class.js"></script>    
     <script src="models/keyboard.class.js"></script>
@@ -32,35 +33,53 @@
 </head>
 <body onload="onStart()">
 
-    <h1 class="zabars">El Pollo Loco</h1>
+    <h1 id="header" class="zabars">El Pollo Loco</h1>
 
-    <div class="allow_menu_music">
-        <p>Pepe needs you to allow Music and Sounds to play</p>
-        <button onclick="PlayMenuMusic()">Ok</button>
+    <div id="welcome" class="">
+        <div class="welcome_window">
+            <p>Welcome to El Pollo Loco!<br>
+            Help Pepe to break out from the desert!</p>
+            <button onclick="PlayMenuMusic(), hideWelcomeWindow()">Play Game</button>
+        </div>
     </div>
     
     <div class="d-none" id="settings">
         <div class="settings_inner">
-            <img onclick="closeSettings()" src="./img/10_menu/exit.png" alt="">
             <h2>Settings</h2>
-             
+            
             <div class="slidecontainer">
-                <p>Music : ON</p>
-                <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
-                 <span id="demo"></span></p>
-              </div>
-            <p>Screen : Window</p>
-            <p>Dificulty : Normal</p>
+                <p id="on_off" onclick="musicOff()">Music : ON</p>
+                <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="myRange" onchange="changeVolume(this.value)">
+            </div>
+
+            <p id="screen" onclick="allowFullscreen()">Screen : Window</p>
+            <img class="door" onclick="closeSettings()" src="./img/10_menu/exit.png" alt="">
+        </div>       
+    </div>
+
+    <div class="d-none" id="howto">
+        <div class="controls">
+            <h2>Controls</h2>
+            <div class="buttons">
+                <img src="img/Keyboard/left.png" alt=""><p>Left</p>
+                <img src="img/Keyboard/right.png" alt=""><p>Right</p>
+                <div class="buttons"><img src="img/Keyboard/up.png" alt=""><p>Jump</p></div>
+            </div>
+            <div class="buttons"><img src="img/Keyboard/space.png" alt=""><p>Throw Bottle</p></div>
+            <div class="buttons"><img src="img/Keyboard/esc.png" alt=""><p>Quit</p></div>          
+            <img class="door" style="top:22% ; left:40%" onclick="closeHowTo()" src="./img/10_menu/exit.png" alt="">
         </div>
         
     </div>
 
-    <canvas id="canvas" width="720" height="480"></canvas>
+
+
+    <canvas id="canvas" width="720" height="480" class="background"></canvas>
     
     <div id="menubar" class="menubar">
         <button onclick="openSettings()">Settings</button>
         <button onclick="init()">Start</button>
-        <button onclick="">How to</button>
+        <button onclick="openHowTo()">Controls</button>
     </div>
 
 </body>

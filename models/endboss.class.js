@@ -3,7 +3,7 @@ class Endboss extends MovableObject {
     height = 300;
     width = 200;
     y = 140;
-    energy = 40;
+    energy = 50;
 
     
     offset =  {
@@ -74,7 +74,7 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (world.character.x > 1800) {
             this.playAnimation(this.IMAGES_ALERT);
-            console.log('HERE');
+            world.statusBarBoss.y = 10;
             }
         }, 200);
         

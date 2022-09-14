@@ -1,8 +1,38 @@
+
+
+// Music volume
+let vol;
+
+function changeVolume(vol) {
+    game_music.volume = vol;
+    menu_guitar.volume = vol;
+    if (vol > 0) {
+        document.getElementById('on_off').innerHTML = 'Music : ON';
+    } else if ( vol == 0) {
+        document.getElementById('on_off').innerHTML = 'Music : OFF';
+        vol = 1;
+    }
+};
+
+function musicOff() {
+    if (vol == 1) {
+        document.getElementById('on_off').innerHTML = 'Music : ON';
+        changeVolume(1);
+        document.getElementById('myRange').value = 1;
+    } else {
+        
+        document.getElementById('on_off').innerHTML = 'Music : OFF';
+        changeVolume(0);
+        document.getElementById('myRange').value = 0;
+        vol = 0;
+    }
+};
+
 // Menu
 
 let menu_guitar = new Audio('./audio/menu_guitar.mp3');
 menu_guitar.loop = true;
-menu_guitar.volume = 0.8;
+
 
 let menu_ambient = new Audio ('./audio/menu_ambient.mp3');
 menu_ambient.volume = 1;
@@ -18,7 +48,7 @@ game_ambient.volume = 0.4;
 
 let game_music = new Audio('./audio/in_game-music.mp3');
 game_music.loop = true;
-game_music.volume = 0.2;
+
 
 // Character Sounds
 
@@ -37,3 +67,8 @@ chicken_beeps_short_sound = new Audio('./audio/chicken_beep_short.mp3');
 
 chicken_dead_sound = new Audio('./audio/chicken_dead.mp3');
 chicken_dead_sound.volume = 0.2;
+
+// Bottle Sounds
+
+let bottle_splash_sound = new Audio ('./audio/bottle_crash.mp3');
+bottle_splash_sound.volume = 0.5;
