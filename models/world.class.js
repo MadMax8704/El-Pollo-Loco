@@ -50,11 +50,11 @@ class World {
         this.throwableObjects.forEach(bottle => {
             if (this.level.endboss[0].isColliding(bottle)) {
                 bottle.bottleHit();
+                this.level.endboss[0].bottle_hit = true;
                 bottle_splash_sound.play();
                 this.level.endboss[0].energy--;
-                console.log(this.level.endboss[0].energy);
+                console.log(this.statusBarBoss.percentage);
                 this.statusBarBoss.setPercentage(this.level.endboss[0].energy);
-
             }
         });
 

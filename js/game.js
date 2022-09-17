@@ -4,6 +4,8 @@ let keyboard = new Keyboard();
 
 
 function init() {
+   
+   levelInit();
    document.getElementById('menubar').style = "display: none";
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
@@ -11,14 +13,14 @@ function init() {
    document.getElementById('canvas').classList.remove('background');
    StopMenuMusic();
    StartGameMusic();
-
    console.log('My character is', world.character);
 
    if (fullscreen) {
       fullScreen();
    }
-
 }
+
+
 
 function StopMenuMusic() {
 

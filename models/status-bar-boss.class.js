@@ -12,7 +12,7 @@ class StatusBarBoss extends DrawableObject{
         'img/7_statusbars/Statusbar_boss/vekt/0-removebg-preview.png'       
     ];
 
-    percentage = 100;
+   percentage;
 
     constructor() {
         super();
@@ -28,30 +28,29 @@ class StatusBarBoss extends DrawableObject{
         this.percentage = percentage;
         let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
-
     }
 
         resolveImageIndex() {
             
-            if (this.percentage == 100) {
-                return 0;
-            } else if (this.percentage > 90) {
+            if (this.percentage == 50) {
                 return 1;
-            } else if (this.percentage > 80) {
+            } else if (this.percentage > 44) {
+                return 1;
+            } else if (this.percentage > 35) {
                 return 2;
-            } else if (this.percentage > 70) {
-                return 3;
-            } else if (this.percentage > 60) {
-                return 4;
-            } else if (this.percentage > 50) {
-                return 5;
-            } else if (this.percentage > 40) {
-                return 6;
             } else if (this.percentage > 30) {
-                return 7;
+                return 3;
+            } else if (this.percentage > 25) {
+                return 4;
             } else if (this.percentage > 20) {
+                return 5;
+            } else if (this.percentage > 15) {
+                return 6;
+            } else if (this.percentage > 8) {
+                return 7;
+            } else if (this.percentage > 4) {
                 return 8;
-            } else if (this.percentage > 10) {
+            } else if (this.percentage > 0) {
                 return 9;
             } else {
                 return 0;

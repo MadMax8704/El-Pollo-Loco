@@ -8,6 +8,7 @@ class Character extends MovableObject {
         right: 30
     }
 
+    x = 150;
     height = 280;
     y = 20;
     speed = 3;
@@ -134,6 +135,9 @@ class Character extends MovableObject {
 
             if(this.isDead()){
                 this.playAnimation(this.IMAGES_DEAD);
+                // setInterval(() =>{
+                //     this.y ++ *2;
+                // }, 800);
                 
             } 
             

@@ -4,25 +4,24 @@ class Endboss extends MovableObject {
     width = 200;
     y = 140;
     energy = 50;
+    bottle_hit = false;
 
-    
-    offset =  {
+    offset = {
         top: 20,
         left: 20,
         right: 20,
         bottom: 20
     };
-    
-    
+
     IMAGES_WALKING = [
-        
+
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
         'img/4_enemie_boss_chicken/1_walk/G3.png',
-        'img/4_enemie_boss_chicken/1_walk/G4.png'       
-        
+        'img/4_enemie_boss_chicken/1_walk/G4.png'
+
     ];
-    
+
     IMAGES_ALERT = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
         'img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -64,29 +63,66 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 2100;       
-        this.animate(); 
-        
+        this.x = 2600;
+        this.animate();
+
+
     };
 
     animate() {
-
-        setInterval(() => {
-            if (world.character.x > 1800) {
-            this.playAnimation(this.IMAGES_ALERT);
-            world.statusBarBoss.y = 10;
-            }
-        }, 200);
         
-             setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
-        }, 200);
-
         setInterval(() => {
-            if (this.energy < 0) {
-            this.playAnimation(this.IMAGES_DEAD);
-            }
-        }, 200);
+        if (world.character.x > 1800) {
+                world.statusBarBoss.y = 0;               
+                this.bossMove();
+             }
+        },200)
+        
+        setInterval(() => {
+            if (this.x > 2300) {
+                this.playAnimation(this.IMAGES_WALKING);
+            } else {
+                this.playAnimation(this.IMAGES_ALERT);
+            } 
+            if (this.bottle_hit && this.energy > 0)
+            {
+                this.playAnimation(this.IMAGES_HURT);
+                this.bottle_hit = false;
+                
+            };
 
+            if (this.energy < 0) {
+                this.playAnimation(this.IMAGES_DEAD)
+                this.showEndscreen();
+                
+            }
+        }, 200);       
+    } 
+    
+    showEndscreen() {
+    console.log('THE END');
+    world.statusBarBoss.y = -70;
+    world.statusBarBottles.y = -70;
+    world.statusBarCoins.y = -70;
+    world.statusBar.y = -70;
+    setTimeout(this.gameOver, 2000);
     }
+
+    gameOver() {
+        console.log('THE END');
+    }
+
+
+    bossMove() {   
+        this.moving = setInterval(() => {
+            if (this.x > 2300) {
+                this.moveLeft();
+            }
+        }, 1000 / 60);        
+    }
+
+
+
+
+
 }

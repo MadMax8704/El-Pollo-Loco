@@ -66,6 +66,7 @@ canvas {
     border-radius: 6px;
     cursor: pointer;
     text-shadow: 2px 2px 8px rgb(0, 0, 0);
+    margin-bottom: 160px;
 }
 
 .menubar button:hover {
