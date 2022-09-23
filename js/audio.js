@@ -68,7 +68,20 @@ chicken_beeps_short_sound = new Audio('./audio/chicken_beep_short.mp3');
 chicken_dead_sound = new Audio('./audio/chicken_dead.mp3');
 chicken_dead_sound.volume = 0.2;
 
+chicken_dead_sound_2 = new Audio('./audio/chicken_dead_sound_2.mp3');
+chicken_dead_sound_2.volume = 0.2;
+
+small_chicken_beeps_sound = new Audio('./audio/small_chicken-peeps.mp3');
+small_chicken_beeps_sound.volume = 1;
+
 // Bottle Sounds
 
 let bottle_splash_sound = new Audio ('./audio/bottle_crash.mp3');
 bottle_splash_sound.volume = 0.5;
+
+// Boss Sounds
+let boss_beep_sound = new Audio ('./audio/boss_beep.mp3');
+boss_beep_sound.volume = 1;
+
+let boss_hit_sound = new Audio ('./audio/boss_hit.mp3');
+boss_hit_sound.volume = 1;

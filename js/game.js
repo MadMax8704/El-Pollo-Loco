@@ -4,7 +4,7 @@ let keyboard = new Keyboard();
 
 
 function init() {
-   
+   document.getElementById('gameover').classList.add('d-none');
    levelInit();
    document.getElementById('menubar').style = "display: none";
    canvas = document.getElementById('canvas');

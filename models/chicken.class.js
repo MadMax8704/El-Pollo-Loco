@@ -51,6 +51,7 @@ class Chicken extends MovableObject {
         }, 200);
         clearInterval(this.walking);
         clearInterval(this.move);
+        chicken_dead_sound_2.play();
         
     }
 

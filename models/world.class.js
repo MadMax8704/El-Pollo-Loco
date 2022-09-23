@@ -8,6 +8,7 @@ class World {
     camera_x = 0;
     statusBar = new StatusBar();
     statusBarCoins = new StatusBarCoins();
+    statusBarBottlesQuantity = new StatusBarBottlesQuantity();
     statusBarBottles = new StatusBarBottles();
     statusBarBoss = new StatusBarBoss();
     throwableObjects = [];
@@ -40,8 +41,10 @@ class World {
                 this.throwableObjects.push(bottle);
                 this.character.bottles--;
                 this.statusBarBottles.setPercentage(this.character.bottles);
+                this.statusBarBottlesQuantity.bottleTimer();
                 
             }
+ 
         }
     }
 
@@ -67,7 +70,7 @@ class World {
             }else if(this.character.isAboveGround() && !enemy.dead){
                     enemy.dead = true;
                     enemy.enemyIsDead();
-                    chicken_dead_sound.play();
+                    
             }}; 
         });
 
@@ -94,7 +97,9 @@ class World {
                 this.character.takeBottle();
                 this.level.bottles.splice(i, 1);
                 bottle_take_sound.play();
+                this.throwableObjects.bottle ++;
                 this.statusBarBottles.setPercentage(this.character.bottles);
+                
             }
         });
 
@@ -112,6 +117,7 @@ class World {
         this.ctx.translate(-this.camera_x , 0);
         this.addToMap(this.statusBar);
         this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarBottlesQuantity);
         this.addToMap(this.statusBarBottles);
         this.addToMap(this.statusBarBoss);
         this.ctx.translate(this.camera_x , 0);

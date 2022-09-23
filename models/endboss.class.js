@@ -73,14 +73,20 @@ class Endboss extends MovableObject {
         
         setInterval(() => {
         if (world.character.x > 1800) {
+            this.bossMove(2300);
+            if (this.energy > 0) {
+                boss_beep_sound.play();
                 world.statusBarBoss.y = 0;               
-                this.bossMove();
-             }
+
+               }; 
+                
+            }
         },200)
         
-        setInterval(() => {
+        this.bossanimate = setInterval(() => {
             if (this.x > 2300) {
                 this.playAnimation(this.IMAGES_WALKING);
+                
             } else {
                 this.playAnimation(this.IMAGES_ALERT);
             } 
@@ -88,39 +94,58 @@ class Endboss extends MovableObject {
             {
                 this.playAnimation(this.IMAGES_HURT);
                 this.bottle_hit = false;
+                this.addEnemy();
+                boss_hit_sound.play();
                 
             };
+
+            if (this.energy < 12) {
+                this.bossMove(2000);
+                this.playAnimation(this.IMAGES_WALKING);
+                }
+
+            if( this.energy > 0 && this.x < 2001) {
+                this.playAnimation(this.IMAGES_ALERT);
+            }
 
             if (this.energy < 0) {
                 this.playAnimation(this.IMAGES_DEAD)
                 this.showEndscreen();
-                
+                boss_beep_sound.pause();
+                world.statusBarBoss.y = -70;
             }
-        }, 200);       
+        }, 200);
+        
     } 
     
     showEndscreen() {
-    console.log('THE END');
-    world.statusBarBoss.y = -70;
+    game_music.pause();
+    level1.enemies.length = 0;
     world.statusBarBottles.y = -70;
     world.statusBarCoins.y = -70;
     world.statusBar.y = -70;
+    clearInterval(this.bossanimate);
+    clearInterval();
     setTimeout(this.gameOver, 2000);
     }
 
     gameOver() {
-        console.log('THE END');
+        document.getElementById('gameover').classList.remove('d-none');
     }
 
 
-    bossMove() {   
+    bossMove(m) {   
         this.moving = setInterval(() => {
-            if (this.x > 2300) {
+            if (this.x > m) {
                 this.moveLeft();
             }
         }, 1000 / 60);        
     }
 
+    addEnemy() {
+      this.end_enemies = new Chicken_small(2250);
+       level1.enemies.push(this.end_enemies); 
+    }
 
 
 

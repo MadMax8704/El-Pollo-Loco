@@ -15,12 +15,15 @@ function levelInit() {
         new Chicken(),
         new Chicken(),
         new Chicken(),
-        new Chicken_small(),
-        new Chicken_small(),
-        new Chicken_small(),
-        new Chicken_small(),
-        new Chicken_small(),
-        new Chicken_small()
+        new Chicken_small(400),
+        new Chicken_small(580),
+        new Chicken_small(680),
+        new Chicken_small(820),
+        new Chicken_small(1200),
+        new Chicken_small(1500),
+        new Chicken_small(1600),
+        new Chicken_small(1800),
+        
         
     ],
 
@@ -87,7 +90,7 @@ function levelInit() {
             new Bottles( 1500,240),
             new Bottles( 1800,140),
             new Bottles( 2000,340),
-            new Bottles( 2000,340),
+            new Bottles( 2000,380),
         ]
     
 
