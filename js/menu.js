@@ -62,12 +62,12 @@ function allowFullscreen() {
 }
 
 function fullScreen(){
-  var el = document.getElementById('canvas');
+  var full = document.getElementById('canvas');
 
-  if(el.webkitRequestFullScreen) {
-      el.webkitRequestFullScreen();
+  if(full.webkitRequestFullScreen) {
+      full.webkitRequestFullScreen();
   }
  else {
-    el.mozRequestFullScreen();
+    full.mozRequestFullScreen();
  }            
 }

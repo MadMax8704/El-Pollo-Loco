@@ -124,8 +124,8 @@ class Endboss extends MovableObject {
     world.statusBarBottles.y = -70;
     world.statusBarCoins.y = -70;
     world.statusBar.y = -70;
+    world.statusBarBottlesQuantity.y = -70;
     clearInterval(this.bossanimate);
-    clearInterval();
     setTimeout(this.gameOver, 2000);
     }
 
@@ -134,9 +134,9 @@ class Endboss extends MovableObject {
     }
 
 
-    bossMove(m) {   
+    bossMove(move) {   
         this.moving = setInterval(() => {
-            if (this.x > m) {
+            if (this.x > move) {
                 this.moveLeft();
             }
         }, 1000 / 60);        

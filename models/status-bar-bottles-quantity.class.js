@@ -9,8 +9,8 @@ class StatusBarBottlesQuantity extends DrawableObject{
 
     ];
 
-    percentage = 10;
-    
+    indicator = 6;
+    percentage;
 
     constructor() {
         super();
@@ -24,38 +24,46 @@ class StatusBarBottlesQuantity extends DrawableObject{
     }
 
     bottleTimer () {
-        
-        this.timer = setInterval(() => {this.percentage ++ ;
-        console.log(this.percentage);
-        
-        if (this.percentage == 5 ) {
-            clearInterval(this.timer);
-            this.percentage = 0;
-        }
+        this.indicator = 0;
+        this.timer = setInterval(() => {
+            this.indicator ++; 
+            this.percentage++;
+            console.log('Indicator is '+ this.indicator);
+            this.setPercentage( this.percentage );
+            
+            if (this.indicator == 5 ) {
+                clearInterval(this.timer);
+                this.indicator = 6;
+                this.percentage = 0;
+            } 
         } ,800);
-
+        
     }
-
+    
+    
+    
     setPercentage( percentage ) {
         this.percentage = percentage;
-        let path = this.IMAGES[this.resolveImageIndex()];
+        let path = this.IMAGES[this.percentage];
         this.img = this.imageCache[path];
-
+        console.log('Percentage is ' + this.percentage);
+        
     }
-
+    
     resolveImageIndex() {
-        if (this.percentage == 0) {
-            return 5;
-        } else if (this.percentage > 1) {
+        
+        if (this.percentage == 0) { 
+            return 0;
+        } else if (this.percentage == 1) {
             return 4;
-        } else if (this.percentage > 6) {
+        } else if (this.percentage == 2) {
             return 3;
-        } else if (this.percentage > 3) {
+        } else if (this.percentage == 3) {
             return 2;
-        } else if (this.percentage > 0) {
+        } else if (this.percentage == 4) {
             return 1;
         } else {
-            return 0;
+            return 5;
         }
     }
 

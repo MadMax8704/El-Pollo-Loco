@@ -35,14 +35,16 @@ class World {
     }
 
     checkThrowobjects(){
-        if(this.keyboard.SPACE) {
+        if (this.statusBarBottlesQuantity.indicator < 5) {
+            this.keyboard.SPACE = false;
+        }
+        else if(this.keyboard.SPACE) {
             if (this.character.bottles > 0) {
                 let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
                 this.throwableObjects.push(bottle);
                 this.character.bottles--;
                 this.statusBarBottles.setPercentage(this.character.bottles);
                 this.statusBarBottlesQuantity.bottleTimer();
-                
             }
  
         }
@@ -110,10 +112,11 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
         this.ctx.translate(this.camera_x , 0);
+        
         this.addObjectsToMap(this.level.backgroundObjects);
-
-
-
+        
+        
+        this.addObjectsToMap(this.level.clouds);
         this.ctx.translate(-this.camera_x , 0);
         this.addToMap(this.statusBar);
         this.addToMap(this.statusBarCoins);
@@ -127,7 +130,6 @@ class World {
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0);

@@ -1,7 +1,7 @@
-Start Screen
-Musik + Sounds
-Collision
-Endgegner besiegen
-Game Over Screen
-Fullscreen
+End Music wenn Boss stirbt und wenn Pepe stirbt
+Restart function debuggen
+Coins menge anzeigen lassen am Endscreen
+Endscreen wenn Pepe stirbt
 Erklärung
+Buttons für Mobilgeräte hinzufügen
+Responsive machen

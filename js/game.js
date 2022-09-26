@@ -4,8 +4,8 @@ let keyboard = new Keyboard();
 
 
 function init() {
-   document.getElementById('gameover').classList.add('d-none');
    levelInit();
+   document.getElementById('gameover').classList.add('d-none');
    document.getElementById('menubar').style = "display: none";
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);

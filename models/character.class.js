@@ -14,6 +14,7 @@ class Character extends MovableObject {
     speed = 3;
     coins = 0;
     bottles = 0;
+    
 
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -135,9 +136,10 @@ class Character extends MovableObject {
 
             if(this.isDead()){
                 this.playAnimation(this.IMAGES_DEAD);
-                // setInterval(() =>{
-                //     this.y ++ *2;
-                // }, 800);
+                setInterval(() =>{
+                    this.y ++;
+                }, 200);
+                this.pepeDies();
                 
             } 
             
@@ -175,6 +177,20 @@ class Character extends MovableObject {
 
     takeBottle() {
         return this.bottles++;
+     }
+
+     pepeDies() {
+        game_music.pause();
+        level1.enemies.length = 0;
+        world.statusBarBottles.y = -70;
+        world.statusBarCoins.y = -70;
+        world.statusBar.y = -70;
+        world.statusBarBottlesQuantity.y = -70;
+        setTimeout(this.gameOverDead, 2000);
+     }
+
+     gameOverDead() {
+        document.getElementById('gameover').classList.remove('d-none');
      }
 
 }
