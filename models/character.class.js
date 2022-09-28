@@ -138,9 +138,7 @@ class Character extends MovableObject {
                 this.playAnimation(this.IMAGES_DEAD);
                 setInterval(() =>{
                     this.y ++;
-                }, 200);
-                this.pepeDies();
-                
+                }, 200);                
             } 
             
             else if (this.isHurt()) {
@@ -181,15 +179,20 @@ class Character extends MovableObject {
 
      pepeDies() {
         game_music.pause();
+        game_over_loose_sound.play();
         level1.enemies.length = 0;
         world.statusBarBottles.y = -70;
         world.statusBarCoins.y = -70;
         world.statusBar.y = -70;
         world.statusBarBottlesQuantity.y = -70;
         setTimeout(this.gameOverDead, 2000);
-     }
-
-     gameOverDead() {
+        
+    }
+    
+    gameOverDead() {
+        
+        clearInterval(this.pepe_dies);
+        closeFullscreen();
         document.getElementById('gameover').classList.remove('d-none');
      }
 

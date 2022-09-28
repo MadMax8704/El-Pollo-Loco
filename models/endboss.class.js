@@ -72,7 +72,7 @@ class Endboss extends MovableObject {
     animate() {
         
         setInterval(() => {
-        if (world.character.x > 1800) {
+        if (world.character.x > 1700) {
             this.bossMove(2300);
             if (this.energy > 0) {
                 boss_beep_sound.play();
@@ -82,10 +82,13 @@ class Endboss extends MovableObject {
                 
             }
         },200)
+
+        
         
         this.bossanimate = setInterval(() => {
             if (this.x > 2300) {
                 this.playAnimation(this.IMAGES_WALKING);
+                
                 
             } else {
                 this.playAnimation(this.IMAGES_ALERT);
@@ -99,9 +102,14 @@ class Endboss extends MovableObject {
                 
             };
 
+            if (this.energy < 22) {
+                this.bossMove(2100);
+                this.playAnimation(this.IMAGES_ATTACK);
+                }
+
             if (this.energy < 12) {
                 this.bossMove(2000);
-                this.playAnimation(this.IMAGES_WALKING);
+                this.playAnimation(this.IMAGES_ATTACK);
                 }
 
             if( this.energy > 0 && this.x < 2001) {
@@ -115,11 +123,14 @@ class Endboss extends MovableObject {
                 world.statusBarBoss.y = -70;
             }
         }, 200);
+
         
     } 
     
     showEndscreen() {
     game_music.pause();
+    game_music.currentTime = 0;  
+    game_over_win_sound.play();
     level1.enemies.length = 0;
     world.statusBarBottles.y = -70;
     world.statusBarCoins.y = -70;
@@ -130,7 +141,9 @@ class Endboss extends MovableObject {
     }
 
     gameOver() {
-        document.getElementById('gameover').classList.remove('d-none');
+        closeFullscreen();
+        document.getElementById('gameover_win').classList.remove('d-none');
+        
     }
 
 

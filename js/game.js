@@ -4,8 +4,9 @@ let keyboard = new Keyboard();
 
 
 function init() {
-   levelInit();
+   levelInit();   
    document.getElementById('gameover').classList.add('d-none');
+   document.getElementById('gameover_win').classList.add('d-none');
    document.getElementById('menubar').style = "display: none";
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
@@ -25,8 +26,12 @@ function init() {
 function StopMenuMusic() {
 
    menu_guitar.pause();
+   menu_guitar.currentTime = 0;
    menu_ambient.pause();
-       
+   game_over_win_sound.pause();
+   game_over_win_sound.currentTime = 0;
+   game_over_loose_sound.pause();
+   game_over_loose_sound.currentTime = 0;   
  };
 
  function StartGameMusic() {

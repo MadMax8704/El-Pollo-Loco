@@ -73,7 +73,11 @@ class World {
                     enemy.dead = true;
                     enemy.enemyIsDead();
                     
-            }}; 
+            }};
+            
+            if(this.character.isDead()) {
+                this.character.pepeDies();
+            }
         });
 
 

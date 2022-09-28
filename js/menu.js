@@ -64,10 +64,21 @@ function allowFullscreen() {
 function fullScreen(){
   var full = document.getElementById('canvas');
 
-  if(full.webkitRequestFullScreen) {
-      full.webkitRequestFullScreen();
+  if (full.requestFullscreen) {
+    full.requestFullscreen();
+  } else if (full.webkitRequestFullscreen) { /* Safari */
+  full.webkitRequestFullscreen();
+  } else if (full.msRequestFullscreen) { /* IE11 */
+  full.msRequestFullscreen();
+  }           
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
   }
- else {
-    full.mozRequestFullScreen();
- }            
 }

@@ -57,6 +57,9 @@ walking_sound.volume = 1;
 jump_sound = new Audio ('./audio/jump.mp3');
 bottle_take_sound = new Audio ('./audio/bottle_take.mp3');
 coin_sound = new Audio ('./audio/coin_take.mp3');
+game_over_loose_sound = new Audio ('./audio/game_over_arcade_2.mp3');
+game_over_loose_sound.loop = false;
+game_over_win_sound = new Audio ('./audio/hat_dance.mp3');
 
 // Chicken Sounds
 
