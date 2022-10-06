@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,64 +22,75 @@
     <script src="models/status-bar-bottles-quantity.class.js"></script>
     <script src="models/status-bar-boss.class.js"></script>
     <script src="models/world.class.js"></script>
-    <script src="models/background-object.class.js"></script>    
+    <script src="models/background-object.class.js"></script>
     <script src="models/keyboard.class.js"></script>
     <script src="models/coins.class.js"></script>
     <script src="models/bottles.class.js"></script>
     <script src="models/level.class.js"></script>
-    <script src="./models/throwable-object.class.js"></script>    
+    <script src="./models/throwable-object.class.js"></script>
     <script src="models/endboss.class.js"></script>
     <script src="levels/level1.js"></script>
     <script src="./js/game.js"></script>
-    
+
 
 </head>
+
 <body onload="onStart()">
 
-    <h1 id="header" class="zabars">El Pollo Loco</h1>
+    <!-- <h1 id="header" class="zabars">El Pollo Loco</h1> -->
 
     <div id="welcome" class="">
         <div class="welcome_window">
             <p>Welcome to El Pollo Loco!<br>
-            Help Pepe to break out from the desert!</p>
+                Help Pepe to break out from the desert!</p>
             <button onclick="PlayMenuMusic(), hideWelcomeWindow()">Play Game</button>
         </div>
     </div>
-    
+
     <div class="d-none" id="settings">
         <div class="settings_inner">
             <h2>Settings</h2>
-            
+
             <div class="slidecontainer">
                 <p id="on_off" onclick="musicOff()">Music : ON</p>
-                <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="myRange" onchange="changeVolume(this.value)">
+                <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="myRange"
+                    onchange="changeVolume(this.value)">
             </div>
 
             <p id="screen" onclick="allowFullscreen()">Screen : Window</p>
             <img class="door" onclick="closeSettings()" src="./img/10_menu/exit.png" alt="">
-        </div>       
+        </div>
     </div>
 
     <div class="d-none" id="howto">
         <div class="controls">
             <h2>Controls</h2>
             <div class="buttons">
-                <img src="img/Keyboard/left.png" alt=""><p>Left</p>
-                <img src="img/Keyboard/right.png" alt=""><p>Right</p>
-                <div class="buttons"><img src="img/Keyboard/up.png" alt=""><p>Jump</p></div>
+                <img src="img/Keyboard/left.png" alt="">
+                <p>Left</p>
+                <img src="img/Keyboard/right.png" alt="">
+                <p>Right</p>
+                <div class="buttons"><img src="img/Keyboard/up.png" alt="">
+                    <p>Jump</p>
+                </div>
             </div>
-            <div class="buttons"><img src="img/Keyboard/space.png" alt=""><p>Throw Bottle</p></div>
-            <div class="buttons"><img src="img/Keyboard/esc.png" alt=""><p>Quit</p></div>          
+            <div class="buttons"><img src="img/Keyboard/space.png" alt="">
+                <p>Throw Bottle</p>
+            </div>
+            <div class="buttons"><img src="img/Keyboard/esc.png" alt="">
+                <p>Quit</p>
+            </div>
             <img class="door" style="top:22% ; left:40%" onclick="closeHowTo()" src="./img/10_menu/exit.png" alt="">
         </div>
         
     </div>
-
-
-
-    <canvas id="canvas" width="720" height="480" class="background"></canvas>
     
-    <div id="menubar" class="menubar">
+    
+    
+    <canvas id="canvas" width="720px" height="480px" class="background"></canvas>
+    <!-- <div class="overlay"></div> -->
+
+    <div id="menubar" class="menubar d-none">
         <button onclick="openSettings()">Settings</button>
         <button onclick="init()">Start</button>
         <button onclick="openHowTo()">Controls</button>
@@ -88,20 +100,33 @@
         <img src="img/9_intro_outro_screens/game_over/game over.png" alt="">
         <div class="end_buttons">
             <button onclick="init()">Restart Game</button>
-            <button onclick="window.location.reload()" >Back to Homepage</button>
+            <button onclick="window.location.reload()">Back to Homepage</button>
         </div>
         <h1 class="game_over_messege">You Died!</h1>
+        <div class="coins_collect">
+            <p>You collected</p>
+            <p id="coin_loose"></p>
+            <p>coins from 10</p>
+        </div>
+
     </div>
 
     <div id="gameover_win" class="game_over d-none">
         <img src="img/9_intro_outro_screens/game_over/game over.png" alt="">
         <div class="end_buttons">
             <button onclick="init()">Restart Game</button>
-            <button onclick="window.location.reload()" >Back to Homepage</button>
+            <button onclick="window.location.reload()">Back to Homepage</button>
         </div>
         <h1 class="game_over_messege">You Won!</h1>
+        <div class="coins_collect">
+            <p>You collected</p>
+            <p id="coin_win"></p>
+            <p>coins from 10</p>
+        </div>
+
     </div>
 
 
 </body>
+
 </html>

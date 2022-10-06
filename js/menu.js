@@ -9,7 +9,7 @@ function PlayMenuMusic(){
 
 function hideWelcomeWindow() {
   document.getElementById('welcome').classList.add("d-none");
-
+  document.getElementById('menubar').classList.remove("d-none");
 }
 
 
@@ -29,24 +29,28 @@ window.addEventListener("keydown", (e) => {
 function openSettings() {
     document.getElementById('settings').classList.remove("d-none");
     document.getElementById('settings').classList.add("settings_menu");
+    document.getElementById('menubar').classList.add("d-none");
     menu_click.play();
 
 }
 function closeSettings() {
     document.getElementById('settings').classList.add("d-none");
     document.getElementById('settings').classList.remove("settings_menu");
+    document.getElementById('menubar').classList.remove("d-none");
     menu_click.play();
 }
 
 function openHowTo() {
   document.getElementById('howto').classList.remove("d-none");
   document.getElementById('howto').classList.add("how_to");
+  document.getElementById('menubar').classList.add("d-none");
   menu_click.play();
 }
 
 function closeHowTo() {
   document.getElementById('howto').classList.add("d-none");
   document.getElementById('howto').classList.remove("how_to");
+  document.getElementById('menubar').classList.remove("d-none");
   menu_click.play();
 }
 

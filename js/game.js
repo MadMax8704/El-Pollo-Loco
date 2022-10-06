@@ -7,7 +7,7 @@ function init() {
    levelInit();   
    document.getElementById('gameover').classList.add('d-none');
    document.getElementById('gameover_win').classList.add('d-none');
-   document.getElementById('menubar').style = "display: none";
+   document.getElementById('menubar').classList.add("d-none");
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
    document.getElementById('header').classList.add('d-none');

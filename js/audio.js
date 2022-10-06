@@ -54,6 +54,7 @@ game_music.loop = true;
 
 walking_sound = new Audio('./audio/walk.mp3');
 walking_sound.volume = 1;
+hit_sound = new Audio ('./audio/aua_1.mp3');
 jump_sound = new Audio ('./audio/jump.mp3');
 bottle_take_sound = new Audio ('./audio/bottle_take.mp3');
 coin_sound = new Audio ('./audio/coin_take.mp3');

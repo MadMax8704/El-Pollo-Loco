@@ -53,7 +53,7 @@ class StatusBarBottlesQuantity extends DrawableObject{
     resolveImageIndex() {
         
         if (this.percentage == 0) { 
-            return 0;
+            return 5;
         } else if (this.percentage == 1) {
             return 4;
         } else if (this.percentage == 2) {
@@ -63,7 +63,7 @@ class StatusBarBottlesQuantity extends DrawableObject{
         } else if (this.percentage == 4) {
             return 1;
         } else {
-            return 5;
+            return 0;
         }
     }
 

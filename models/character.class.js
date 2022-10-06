@@ -143,6 +143,7 @@ class Character extends MovableObject {
             
             else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+                hit_sound.play();
             }
 
             else if (this.isAboveGround()) {
@@ -179,8 +180,11 @@ class Character extends MovableObject {
 
      pepeDies() {
         game_music.pause();
+        game_music.currentTime = 0;
+        boss_beep_sound.pause();
         game_over_loose_sound.play();
         level1.enemies.length = 0;
+        level1.endboss.length = 0;
         world.statusBarBottles.y = -70;
         world.statusBarCoins.y = -70;
         world.statusBar.y = -70;
@@ -194,6 +198,10 @@ class Character extends MovableObject {
         clearInterval(this.pepe_dies);
         closeFullscreen();
         document.getElementById('gameover').classList.remove('d-none');
+        this.cons = level1.coins.length;
+        this.consty = 10 - this.cons ;
+        document.getElementById('coin_loose').innerHTML += this.consty;
+        console.log('coins', consty);
      }
 
 }

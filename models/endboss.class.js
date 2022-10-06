@@ -70,49 +70,48 @@ class Endboss extends MovableObject {
     };
 
     animate() {
-        
+
         setInterval(() => {
-        if (world.character.x > 1700) {
-            this.bossMove(2300);
-            if (this.energy > 0) {
-                boss_beep_sound.play();
-                world.statusBarBoss.y = 0;               
+            if (world.character.x > 1700 && world.character.y < 500) {
+                this.bossMove(2300);
+                if (this.energy > 0) {
+                    boss_beep_sound.play();
+                    world.statusBarBoss.y = 0;
 
-               }; 
-                
+                };
+
             }
-        },200)
+        }, 200)
 
-        
-        
+
+
         this.bossanimate = setInterval(() => {
             if (this.x > 2300) {
                 this.playAnimation(this.IMAGES_WALKING);
-                
-                
+
+
             } else {
                 this.playAnimation(this.IMAGES_ALERT);
-            } 
-            if (this.bottle_hit && this.energy > 0)
-            {
+            }
+            if (this.bottle_hit && this.energy > 0) {
                 this.playAnimation(this.IMAGES_HURT);
                 this.bottle_hit = false;
                 this.addEnemy();
                 boss_hit_sound.play();
-                
+
             };
 
             if (this.energy < 22) {
                 this.bossMove(2100);
                 this.playAnimation(this.IMAGES_ATTACK);
-                }
+            }
 
             if (this.energy < 12) {
                 this.bossMove(2000);
                 this.playAnimation(this.IMAGES_ATTACK);
-                }
+            }
 
-            if( this.energy > 0 && this.x < 2001) {
+            if (this.energy > 0 && this.x < 2001) {
                 this.playAnimation(this.IMAGES_ALERT);
             }
 
@@ -120,44 +119,46 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_DEAD)
                 this.showEndscreen();
                 boss_beep_sound.pause();
-                world.statusBarBoss.y = -70;
             }
         }, 200);
 
-        
-    } 
-    
+
+    }
+
     showEndscreen() {
-    game_music.pause();
-    game_music.currentTime = 0;  
-    game_over_win_sound.play();
-    level1.enemies.length = 0;
-    world.statusBarBottles.y = -70;
-    world.statusBarCoins.y = -70;
-    world.statusBar.y = -70;
-    world.statusBarBottlesQuantity.y = -70;
-    clearInterval(this.bossanimate);
-    setTimeout(this.gameOver, 2000);
+        game_music.pause();
+        game_music.currentTime = 0;
+        game_over_win_sound.play();
+        level1.enemies.length = 0;
+        world.statusBarBoss.y = -70;
+        world.statusBarBottles.y = -70;
+        world.statusBarCoins.y = -70;
+        world.statusBar.y = -70;
+        world.statusBarBottlesQuantity.y = -70;
+        clearInterval(this.bossanimate);
+        setTimeout(this.gameOver, 2000);
     }
 
     gameOver() {
         closeFullscreen();
+        this.cons = level1.coins.length;
+        this.consty = 10 - this.cons ;
         document.getElementById('gameover_win').classList.remove('d-none');
-        
+        document.getElementById('coin_win').innerHTML += this.consty;
     }
 
 
-    bossMove(move) {   
+    bossMove(move) {
         this.moving = setInterval(() => {
             if (this.x > move) {
                 this.moveLeft();
             }
-        }, 1000 / 60);        
+        }, 1000 / 60);
     }
 
     addEnemy() {
-      this.end_enemies = new Chicken_small(2250);
-       level1.enemies.push(this.end_enemies); 
+        this.end_enemies = new Chicken_small(2250);
+        level1.enemies.push(this.end_enemies);
     }
 
 
