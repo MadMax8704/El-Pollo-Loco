@@ -28,7 +28,8 @@ class StatusBarBottlesQuantity extends DrawableObject{
         this.timer = setInterval(() => {
             this.indicator ++; 
             this.percentage++;
-            console.log('Indicator is '+ this.indicator);
+            //Activate to show in Console how many secs you have to wait to throw an other Bottle
+                //console.log('Indicator is '+ this.indicator);
             this.setPercentage( this.percentage );
             
             if (this.indicator == 5 ) {
@@ -45,9 +46,7 @@ class StatusBarBottlesQuantity extends DrawableObject{
     setPercentage( percentage ) {
         this.percentage = percentage;
         let path = this.IMAGES[this.percentage];
-        this.img = this.imageCache[path];
-        console.log('Percentage is ' + this.percentage);
-        
+        this.img = this.imageCache[path];        
     }
     
     resolveImageIndex() {
@@ -63,7 +62,7 @@ class StatusBarBottlesQuantity extends DrawableObject{
         } else if (this.percentage == 4) {
             return 1;
         } else {
-            return 0;
+            return 5;
         }
     }
 

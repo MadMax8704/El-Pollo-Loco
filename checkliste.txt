@@ -1,3 +1,0 @@
-Erklärung ()
-Buttons für Mobilgeräte hinzufügen
-Responsive machen

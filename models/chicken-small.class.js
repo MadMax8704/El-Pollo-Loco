@@ -3,7 +3,7 @@ class Chicken_small extends MovableObject {
     offset =  {
         top: 10,
         left: -10,
-        right: 10,
+        right: 5,
         bottom: 0
     }
 
@@ -30,8 +30,7 @@ class Chicken_small extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = a ;
         this.speed = 0.55 + Math.random() * 0.75;
-        this.animate();
-        
+        this.animate();      
     }
     
     move;
@@ -40,11 +39,9 @@ class Chicken_small extends MovableObject {
     animate() {
         if(!this.dead) {
             this.move = setInterval(() => {
-                this.moveLeft();
-                   
+                this.moveLeft();                   
             }, 1000 / 60);
-            
-            
+
             this.walking = setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
             
@@ -59,12 +56,6 @@ class Chicken_small extends MovableObject {
         clearInterval(this.walking);
         clearInterval(this.move);
         chicken_dead_sound.play();
-        
-        
     }
     
-    jump(){
-        this.speedY = 15;
-    }
-
 }

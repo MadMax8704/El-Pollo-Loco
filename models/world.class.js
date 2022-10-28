@@ -51,6 +51,8 @@ class World {
     }
 
     checkCollosions () {
+        
+        //Bottle Endboss Collosion (hit)
 
         this.throwableObjects.forEach(bottle => {
             if (this.level.endboss[0].isColliding(bottle)) {
@@ -58,10 +60,13 @@ class World {
                 this.level.endboss[0].bottle_hit = true;
                 bottle_splash_sound.play();
                 this.level.endboss[0].energy--;
-                console.log(this.statusBarBoss.percentage);
+                //Activate to show the boss energy in Console
+                    //console.log(this.statusBarBoss.percentage);
                 this.statusBarBoss.setPercentage(this.level.endboss[0].energy);
             }
         });
+
+        //Enemy Character Collosion (hit)
 
         this.level.enemies.forEach((enemy, i) => {
             if (this.character.isColliding(enemy) ) {
@@ -76,10 +81,12 @@ class World {
             }};
             
             if(this.character.isDead()) {
+                //Game Over
                 this.character.pepeDies();
             }
         });
 
+        //Endboss Character Collosion (hit)
 
         this.level.endboss.forEach(endboss => {
             if (this.character.isColliding(endboss)) {
@@ -88,6 +95,8 @@ class World {
             };
 
         });
+
+        //Coin Character Collosion (take)
 
         this.level.coins.forEach((coins, i) => {
             if (this.character.isColliding(coins)) {
@@ -98,6 +107,8 @@ class World {
             }
         });
 
+        //Bottle Character Collosion (take)
+
         this.level.bottles.forEach((bottles, i) => {
             if (this.character.isColliding(bottles)) {
                 this.character.takeBottle();
@@ -105,7 +116,6 @@ class World {
                 bottle_take_sound.play();
                 this.throwableObjects.bottle ++;
                 this.statusBarBottles.setPercentage(this.character.bottles);
-                
             }
         });
 
@@ -115,27 +125,24 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
-        this.ctx.translate(this.camera_x , 0);
-        
-        this.addObjectsToMap(this.level.backgroundObjects);
-        
-        
+        this.ctx.translate(this.camera_x, 0);        
+        this.addObjectsToMap(this.level.backgroundObjects);      
         this.addObjectsToMap(this.level.clouds);
-        this.ctx.translate(-this.camera_x , 0);
+        this.ctx.translate(-this.camera_x, 0);
+
         this.addToMap(this.statusBar);
         this.addToMap(this.statusBarCoins);
         this.addToMap(this.statusBarBottlesQuantity);
         this.addToMap(this.statusBarBottles);
         this.addToMap(this.statusBarBoss);
+
         this.ctx.translate(this.camera_x , 0);
-        
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.endboss);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
-
         this.ctx.translate(-this.camera_x, 0);
 
         requestAnimationFrame(() => {
@@ -156,6 +163,8 @@ class World {
             this.flipImage(mo);
         }
         mo.draw(this.ctx);
+        //To show hitbox activate this two methods
+
         // mo.drawFrame(this.ctx);
         // mo.drawFrameRed(this.ctx);
         

@@ -31,70 +31,115 @@
     <script src="models/endboss.class.js"></script>
     <script src="levels/level1.js"></script>
     <script src="./js/game.js"></script>
-
-
 </head>
 
 <body onload="onStart()">
 
-    <!-- <h1 id="header" class="zabars">El Pollo Loco</h1> -->
+    <!-- Welcome Window -->
 
     <div id="welcome" class="">
         <div class="welcome_window">
             <p>Welcome to El Pollo Loco!<br>
-                Help Pepe to break out from the desert!</p>
+                Help Pepe to break out from the desert! <br> You can kill the enemies
+            if you jump on them and kill the big one with the Chilli Bottles!</p>
             <button onclick="PlayMenuMusic(), hideWelcomeWindow()">Play Game</button>
         </div>
     </div>
 
-    <div class="d-none" id="settings">
-        <div class="settings_inner">
-            <h2>Settings</h2>
+    <!-- Show Controls on the top of Canvas -->
 
-            <div class="slidecontainer">
-                <p id="on_off" onclick="musicOff()">Music : ON</p>
-                <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="myRange"
-                    onchange="changeVolume(this.value)">
-            </div>
-
-            <p id="screen" onclick="allowFullscreen()">Screen : Window</p>
-            <img class="door" onclick="closeSettings()" src="./img/10_menu/exit.png" alt="">
-        </div>
-    </div>
-
-    <div class="d-none" id="howto">
-        <div class="controls">
-            <h2>Controls</h2>
-            <div class="buttons">
-                <img src="img/Keyboard/left.png" alt="">
-                <p>Left</p>
-                <img src="img/Keyboard/right.png" alt="">
-                <p>Right</p>
-                <div class="buttons"><img src="img/Keyboard/up.png" alt="">
-                    <p>Jump</p>
-                </div>
-            </div>
-            <div class="buttons"><img src="img/Keyboard/space.png" alt="">
-                <p>Throw Bottle</p>
-            </div>
-            <div class="buttons"><img src="img/Keyboard/esc.png" alt="">
-                <p>Quit</p>
-            </div>
-            <img class="door" style="top:22% ; left:40%" onclick="closeHowTo()" src="./img/10_menu/exit.png" alt="">
-        </div>
-        
+    <div class="control_layer d-none" id="control_lay">
+        <div class="control_layer_div">Left = <img src="./img/Keyboard/left.png" alt="left"></div>
+        <div class="control_layer_div">Right = <img src="./img/Keyboard/right.png" alt="right"></div>
+        <div class="control_layer_div">Jump = <img src="./img/Keyboard/up.png" alt="jump"></div>
+        <div class="control_layer_div">Throw bottle = <img src="./img/Keyboard/space.png" alt="throw bottle"></div>
+        <div class="control_layer_div">Quit = <img src="./img/Keyboard/esc.png" alt="quit"></div>
     </div>
     
-    
-    
-    <canvas id="canvas" width="720px" height="480px" class="background"></canvas>
-    <!-- <div class="overlay"></div> -->
+    <!-- Menubar -->
 
     <div id="menubar" class="menubar d-none">
         <button onclick="openSettings()">Settings</button>
         <button onclick="init()">Start</button>
-        <button onclick="openHowTo()">Controls</button>
+        <button onclick="openControls()">Controls</button>
     </div>
+
+    <!-- Settings menu -->
+
+    <div class="d-none settings_menu" id="settings">
+        <div class="settings_br">
+            <div class="settings_inner">
+                <h2>Settings</h2>
+
+                <div class="slidecontainer">
+                    <p id="on_off" onclick="musicOff()" style="cursor: pointer">Music : ON</p>
+                    <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="myRange"
+                        onchange="changeVolume(this.value)" style="cursor: pointer">
+                </div>
+
+                <p id="screen" onclick="allowFullscreen()" style="cursor: pointer">Screen : Window</p>
+                <img class="door" onclick="closeSettings()" src="./img/10_menu/exit.png" alt="">
+            </div>
+        </div>        
+    </div>
+
+    <!-- Controls menu -->
+    
+    <div class="d-none settings_menu" id="controls">
+        <div class="settings_br">
+            <div class="settings_inner">
+                <h2 id="tohide_2">Controls</h2>
+                <div onclick="hideControlsPhone()" id="touch_img" class="touch d-none" style="cursor: pointer">
+                    <img src="img/Keyboard/touch.png" alt="">
+                </div>
+                <div id="tohide" class="setting_controls">
+
+                    <!-- Touch Controls -->
+
+                    <div class="phone">
+                        <img id="phone_controls" onclick="showControlsPhone()" src="./img/Keyboard/touch.png" alt="touchscreen">
+                        <p>Click on the phone</p>
+                    </div>
+
+                    <!-- Keyboard controls -->
+
+                    <div class="keayboard">
+                        <div class="buttons">
+                            <img src="./img/Keyboard/left.png" alt="left">
+                            <p>Left</p>
+                            <img src="./img/Keyboard/right.png" alt="right">
+                            <p>Right</p>
+                            <div class="buttons"><img src="./img/Keyboard/up.png" alt="up">
+                                <p>Jump</p>
+                            </div>
+                        </div>
+                        <div class="buttons"><img src="./img/Keyboard/space.png" alt="space">
+                            <p>Throw Bottle</p>
+                        </div>
+                        <div class="buttons"><img src="./img/Keyboard/esc.png" alt="esc">
+                            <p>Quit</p>
+                        </div>
+                    </div>
+                </div>
+                <img id="door" class="door" onclick="closeControls()" src="./img/10_menu/exit.png" alt="exit">
+            </div>
+        </div>
+    </div>
+
+
+    <canvas id="canvas" width="720px" height="480px" class="background"></canvas>
+
+    <!-- Touch Overlay for Smartphones -->
+
+    <div id="touch_overlay" class="overlay d-none">
+        <div id="right_down" class="touch_buttons"></div>
+        <div id="right_up" class="touch_buttons"></div>
+        <div id="left_down" class="touch_buttons"></div>
+        <div id="left_up" class="touch_buttons"></div>
+    </div>
+
+
+    <!-- Game Over loose screen -->
 
     <div id="gameover" class="game_over d-none">
         <img src="img/9_intro_outro_screens/game_over/game over.png" alt="">
@@ -110,6 +155,8 @@
         </div>
 
     </div>
+
+    <!-- Game Over win screen -->
 
     <div id="gameover_win" class="game_over d-none">
         <img src="img/9_intro_outro_screens/game_over/game over.png" alt="">

@@ -13,8 +13,6 @@ function hideWelcomeWindow() {
 }
 
 
-
-
 function onStart() {
 
 window.addEventListener("keydown", (e) => {
@@ -40,16 +38,16 @@ function closeSettings() {
     menu_click.play();
 }
 
-function openHowTo() {
-  document.getElementById('howto').classList.remove("d-none");
-  document.getElementById('howto').classList.add("how_to");
+function openControls() {
+  document.getElementById('controls').classList.remove("d-none");
+  document.getElementById('controls').classList.add("how_to");
   document.getElementById('menubar').classList.add("d-none");
   menu_click.play();
 }
 
-function closeHowTo() {
-  document.getElementById('howto').classList.add("d-none");
-  document.getElementById('howto').classList.remove("how_to");
+function closeControls() {
+  document.getElementById('controls').classList.add("d-none");
+  document.getElementById('controls').classList.remove("how_to");
   document.getElementById('menubar').classList.remove("d-none");
   menu_click.play();
 }
@@ -85,4 +83,18 @@ function closeFullscreen() {
   } else if (document.msExitFullscreen) { /* IE11 */
     document.msExitFullscreen();
   }
+}
+
+function showControlsPhone() {
+  document.getElementById('touch_img').classList.remove("d-none");
+  document.getElementById('tohide').classList.add("d-none");
+  document.getElementById('tohide_2').classList.add("d-none");
+  document.getElementById('door').classList.add("d-none");
+}
+
+function hideControlsPhone() {
+  document.getElementById('touch_img').classList.add("d-none");
+  document.getElementById('tohide').classList.remove("d-none");
+  document.getElementById('tohide_2').classList.remove("d-none");
+  document.getElementById('door').classList.remove("d-none");
 }

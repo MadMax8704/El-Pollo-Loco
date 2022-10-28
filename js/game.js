@@ -2,25 +2,36 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+//Initialize the game
 
 function init() {
    levelInit();   
-   document.getElementById('gameover').classList.add('d-none');
-   document.getElementById('gameover_win').classList.add('d-none');
-   document.getElementById('menubar').classList.add("d-none");
-   canvas = document.getElementById('canvas');
-   world = new World(canvas, keyboard);
-   document.getElementById('header').classList.add('d-none');
-   document.getElementById('canvas').classList.remove('background');
    StopMenuMusic();
    StartGameMusic();
-   console.log('My character is', world.character);
+   bindButtons();
+   hideElements();
+   checkFullscreen();
+   canvas = document.getElementById('canvas');
+   world = new World(canvas, keyboard);
+   document.getElementById('canvas').classList.remove('background');   
+   //Activate to show the Character Infos in Console
+      //console.log('My character is', world.character);
+}
 
+function hideElements() {
+   document.getElementById('control_lay').classList.remove("d-none");
+   document.getElementById('touch_overlay').classList.remove("d-none");
+   document.getElementById('coin_loose').innerHTML = ``;
+   document.getElementById('gameover').classList.add('d-none');
+   document.getElementById('gameover_win').classList.add('d-none');
+   document.getElementById('menubar').classList.add("d-none");   
+}
+
+function checkFullscreen() {
    if (fullscreen) {
       fullScreen();
    }
 }
-
 
 
 function StopMenuMusic() {
@@ -41,7 +52,7 @@ function StopMenuMusic() {
 
  };
 
-
+//Keyboard keydown settings
 
 window.addEventListener("keydown", (e) => {
    if (e.keyCode == '39') {
@@ -74,6 +85,8 @@ window.addEventListener("keydown", (e) => {
 
 });
 
+//Keyboard keydup settings
+
 window.addEventListener("keyup", (e) => {
    if (e.keyCode == '39') {
       keyboard.RIGHT = false;
@@ -94,6 +107,51 @@ window.addEventListener("keyup", (e) => {
    if (e.keyCode == '32') {
       keyboard.SPACE = false;
    }
-
-   console.log(e.keyCode);
+   //Activate to show the pushed keys in Console
+      //console.log(e.keyCode);
 });
+
+//Touch control binding
+
+function bindButtons() {
+   document.getElementById('right_down').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.RIGHT = true;
+   });
+
+   document.getElementById('right_down').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.RIGHT = false;
+   });
+
+   document.getElementById('right_up').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.SPACE = true;
+   });
+
+   document.getElementById('right_up').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.SPACE = false;
+   });
+
+   document.getElementById('left_down').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.LEFT = true;
+   });
+
+   document.getElementById('left_down').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.LEFT = false;
+   });
+
+document.getElementById('left_up').addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      keyboard.UP = true;
+   });
+
+   document.getElementById('left_up').addEventListener('touchend', (e) => {
+      e.preventDefault();
+      keyboard.UP = false;
+   });
+   
+}

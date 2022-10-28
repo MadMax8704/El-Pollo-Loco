@@ -1,6 +1,6 @@
 
 
-// Music volume
+// Music volume setting
 let vol;
 
 function changeVolume(vol) {
@@ -16,9 +16,9 @@ function changeVolume(vol) {
 
 function musicOff() {
     if (vol == 1) {
-        document.getElementById('on_off').innerHTML = 'Music : ON';
-        changeVolume(1);
-        document.getElementById('myRange').value = 1;
+        document.getElementById('on_off').innerHTML = 'Music : OFF';
+        changeVolume(0);
+        document.getElementById('myRange').value = 0;
     } else {
         
         document.getElementById('on_off').innerHTML = 'Music : OFF';
@@ -26,9 +26,15 @@ function musicOff() {
         document.getElementById('myRange').value = 0;
         vol = 0;
     }
+
+    if (vol == 0) {
+        document.getElementById('on_off').innerHTML = 'Music : ON';
+        changeVolume(0);
+        document.getElementById('myRange').value = 0;
+    }
 };
 
-// Menu
+// Menu sounds
 
 let menu_guitar = new Audio('./audio/menu_guitar.mp3');
 menu_guitar.loop = true;
@@ -40,7 +46,7 @@ menu_ambient.loop = true;
 
 let menu_click = new Audio('./audio/menu_click.mp3');
 
-// In Game
+// In Game sounds
 
 let game_ambient = new Audio('./audio/ambient_1.mp3');
 game_ambient.loop = true;
