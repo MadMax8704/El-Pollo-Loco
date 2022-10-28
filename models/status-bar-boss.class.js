@@ -1,15 +1,15 @@
 class StatusBarBoss extends DrawableObject{
     IMAGES = [
-        'img/7_statusbars/Statusbar_boss/vekt/1-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/2-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/3-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/4-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/5-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/6-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/7-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/8-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/9-removebg-preview.png',
-        'img/7_statusbars/Statusbar_boss/vekt/0-removebg-preview.png'       
+        './img/7_statusbars/Statusbar_boss/vekt/1-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/2-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/3-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/4-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/5-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/6-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/7-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/8-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/9-removebg-preview.png',
+        './img/7_statusbars/Statusbar_boss/vekt/0-removebg-preview.png'       
     ];
 
    percentage;
