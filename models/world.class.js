@@ -14,7 +14,6 @@ class World {
     statusBarBoss = new StatusBarBoss();
     throwableObjects = [];
 
-
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -47,7 +46,6 @@ class World {
                 this.statusBarBottles.setPercentage(this.character.bottles);
                 this.statusBarBottlesQuantity.bottleTimer();
             }
-
         }
     }
 
@@ -79,10 +77,8 @@ class World {
                     enemy.enemyIsDead();
                 }
             };
-            if (this.character.isDead()) {
-                //Game Over
+            if (this.character.isDead())
                 this.character.pepeDies();
-            }
         });
 
         //Endboss Character Collosion (hit)
@@ -142,7 +138,6 @@ class World {
         requestAnimationFrame(() => {
             this.draw();
         });
-
     }
 
     addObjectsToMap(objects) {
@@ -152,16 +147,14 @@ class World {
     }
 
     addToMap(mo) {
-        if (mo.otherDirection) {
+        if (mo.otherDirection)
             this.flipImage(mo);
-        }
         mo.draw(this.ctx);
         //To show hitbox activate this two methods
         // mo.drawFrame(this.ctx);
         // mo.drawFrameRed(this.ctx);
-        if (mo.otherDirection) {
+        if (mo.otherDirection)
             this.flipImageBack(mo);
-        }
     }
 
     flipImage(mo) {

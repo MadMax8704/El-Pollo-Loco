@@ -6,7 +6,7 @@ function levelInit() {
         createLevelClouds(),
         createLevelBackgroundObjects(),
         createLevelCoins(),
-        createLevelBottles(),
+        createLevelBottles()
     );
 }
 
@@ -27,7 +27,7 @@ function createLevelEnemies() {
         new Chicken_small(1200),
         new Chicken_small(1500),
         new Chicken_small(1600),
-        new Chicken_small(1800),
+        new Chicken_small(1800)
     ];
 }
 
@@ -63,7 +63,6 @@ function createLevelBackgroundObjects() {
         new BackgroundObject('./img/5_background/layers/3_third_layer/2.png', 719 * 3),
         new BackgroundObject('./img/5_background/layers/2_second_layer/2.png', 719 * 3),
         new BackgroundObject('./img/5_background/layers/1_first_layer/2.png', 719 * 3)
-
     ];
 }
 
@@ -78,8 +77,7 @@ function createLevelCoins() {
         new Coins(1280, 140),
         new Coins(1360, 120),
         new Coins(1440, 140),
-        new Coins(1500, 180),
-
+        new Coins(1500, 180)
     ];
 }
 function createLevelBottles() {
@@ -93,6 +91,6 @@ function createLevelBottles() {
         new Bottles(1500, 240),
         new Bottles(1800, 140),
         new Bottles(2000, 340),
-        new Bottles(2200, 340),
+        new Bottles(2200, 340)
     ]
 }

@@ -17,24 +17,23 @@ game_ambient.volume = 0.4;
 let game_music = new Audio('./audio/in_game-music.mp3');
 game_music.loop = true;
 
-
 // Character Sounds
 
-walking_sound = new Audio('./audio/walk.mp3');
+let walking_sound = new Audio('./audio/walk.mp3');
 walking_sound.volume = 1;
-hit_sound = new Audio('./audio/aua_1.mp3');
-jump_sound = new Audio('./audio/jump.mp3');
-bottle_take_sound = new Audio('./audio/bottle_take.mp3');
-coin_sound = new Audio('./audio/coin_take.mp3');
-game_over_loose_sound = new Audio('./audio/game_over_arcade_2.mp3');
+let hit_sound = new Audio('./audio/aua_1.mp3');
+let jump_sound = new Audio('./audio/jump.mp3');
+let bottle_take_sound = new Audio('./audio/bottle_take.mp3');
+let coin_sound = new Audio('./audio/coin_take.mp3');
+let game_over_win_sound = new Audio('./audio/hat_dance.mp3');
+let game_over_loose_sound = new Audio('./audio/game_over_arcade_2.mp3');
 game_over_loose_sound.loop = false;
-game_over_win_sound = new Audio('./audio/hat_dance.mp3');
 
 // Chicken Sounds
 
+let chicken_beeps_short_sound = new Audio('./audio/chicken_beep_short.mp3');
 let chicken_beeps_sound = new Audio('./audio/chicken_beeps.mp3');
 chicken_beeps_sound.volume = 0.2;
-let chicken_beeps_short_sound = new Audio('./audio/chicken_beep_short.mp3');
 let chicken_dead_sound = new Audio('./audio/chicken_dead.mp3');
 chicken_dead_sound.volume = 0.2;
 let chicken_dead_sound_2 = new Audio('./audio/chicken_dead_sound_2.mp3');
