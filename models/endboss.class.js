@@ -65,85 +65,94 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = 2600;
         this.animate();
-
-
     };
 
     animate() {
+        this.bossmoving = setInterval(() => this.bossMoveing(), 200)
+        this.bossanimate = setInterval(() => this.bossFighting(), 200);
+    }
 
-        setInterval(() => {
-            if (world.character.x > 1700 && world.character.y < 500) {
-                this.bossMove(2300);
-                if (this.energy > 0) {
-                    boss_beep_sound.play();
-                    world.statusBarBoss.y = 0;
+    bossMoveing() {
+        if (this.firstContact()) {
+            this.bossMove(2300);
+            boss_beep_sound.play();
+            if (!this.isbossDied())
+                world.statusBarBoss.y = 0;
+        }
+        if (this.x > 2300)
+            this.playAnimation(this.IMAGES_WALKING);
+        else
+            this.playAnimation(this.IMAGES_ALERT);
+    }
 
-                };
+    firstContact() {
+        return world.character.x > 1700 && world.character.y < 500;
+    }
 
-            }
-        }, 200)
+    bossHit() {
+        this.playAnimation(this.IMAGES_HURT);
+        this.bottle_hit = false;
+        this.addEnemy();
+        boss_beep_sound.pause();
+        boss_hit_sound.play();
+        boss_beep_sound.currentTime = 0;
+    }
 
+    bossFighting() {
+        if (this.bottle_hit && this.energy > 0)
+            this.bossHit();
+        if (this.energy < 22)
+            this.bossFirstAttack();
+        if (this.energy < 12)
+            this.bossSecondAttack()
+        if (!this.isbossDied() && this.x < 2001)
+            this.playAnimation(this.IMAGES_ALERT);
+        if (this.isbossDied())
+            this.bossDead();
+    }
 
+    isbossDied() {
+        return this.energy <= 0;
+    }
 
-        this.bossanimate = setInterval(() => {
-            if (this.x > 2300) {
-                this.playAnimation(this.IMAGES_WALKING);
+    bossFirstAttack() {
+        this.bossMove(2100);
+        this.playAnimation(this.IMAGES_ATTACK);
+    }
 
+    bossSecondAttack() {
+        this.bossMove(2000);
+        this.playAnimation(this.IMAGES_ATTACK);
+    }
 
-            } else {
-                this.playAnimation(this.IMAGES_ALERT);
-            }
-            if (this.bottle_hit && this.energy > 0) {
-                this.playAnimation(this.IMAGES_HURT);
-                this.bottle_hit = false;
-                this.addEnemy();
-                boss_hit_sound.play();
-
-            };
-
-            if (this.energy < 22) {
-                this.bossMove(2100);
-                this.playAnimation(this.IMAGES_ATTACK);
-            }
-
-            if (this.energy < 12) {
-                this.bossMove(2000);
-                this.playAnimation(this.IMAGES_ATTACK);
-            }
-
-            if (this.energy > 0 && this.x < 2001) {
-                this.playAnimation(this.IMAGES_ALERT);
-            }
-
-            if (this.energy < 0) {
-                this.playAnimation(this.IMAGES_DEAD)
-                this.showEndscreen();
-                boss_beep_sound.pause();
-            }
-        }, 200);
-
-
+    bossDead() {
+        setInterval(() => this.playAnimation(this.IMAGES_DEAD), 200)
+        this.showEndscreen();
+        boss_beep_sound.pause();
     }
 
     showEndscreen() {
+        clearInterval(this.bossanimate);
+        clearInterval(this.bossmoving);
         game_music.pause();
         game_music.currentTime = 0;
         game_over_win_sound.play();
         level1.enemies.length = 0;
+        this.hideStatusBars();
+        setTimeout(this.gameOver, 2000);
+    }
+
+    hideStatusBars() {
         world.statusBarBoss.y = -70;
         world.statusBarBottles.y = -70;
         world.statusBarCoins.y = -70;
         world.statusBar.y = -70;
         world.statusBarBottlesQuantity.y = -70;
-        clearInterval(this.bossanimate);
-        setTimeout(this.gameOver, 2000);
     }
 
     gameOver() {
         world.character.gameOverDead("win");
-        
     }
-
 
     bossMove(move) {
         this.moving = setInterval(() => {
@@ -157,8 +166,4 @@ class Endboss extends MovableObject {
         this.end_enemies = new Chicken_small(2250);
         level1.enemies.push(this.end_enemies);
     }
-
-
-
-
 }

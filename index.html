@@ -41,7 +41,7 @@
         <div class="welcome_window">
             <p>Welcome to El Pollo Loco!<br>
                 Help Pepe to break out from the desert! <br> You can kill the enemies
-            if you jump on them and kill the big one with the Chilli Bottles!</p>
+                if you jump on them and kill the big one with the Chilli Bottles!</p>
             <button onclick="PlayMenuMusic(), hideWelcomeWindow()">Play Game</button>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="control_layer_div">Throw bottle = <img src="./img/Keyboard/space.png" alt="throw bottle"></div>
         <div class="control_layer_div">Quit = <img src="./img/Keyboard/esc.png" alt="quit"></div>
     </div>
-    
+
     <!-- Menubar -->
 
     <div id="menubar" class="menubar d-none">
@@ -89,11 +89,11 @@
                 <p id="screen" onclick="allowFullscreen()" style="cursor: pointer">Screen : Window</p>
                 <img class="door" onclick="closeSettings()" src="./img/10_menu/exit.png" alt="">
             </div>
-        </div>        
+        </div>
     </div>
 
     <!-- Controls menu -->
-    
+
     <div class="d-none settings_menu" id="controls">
         <div class="settings_br">
             <div class="settings_inner">
@@ -106,7 +106,8 @@
                     <!-- Touch Controls -->
 
                     <div class="phone">
-                        <img id="phone_controls" onclick="showControlsPhone()" src="./img/Keyboard/touch.png" alt="touchscreen">
+                        <img id="phone_controls" onclick="showControlsPhone()" src="./img/Keyboard/touch.png"
+                            alt="touchscreen">
                         <p>Click on the phone</p>
                     </div>
 
@@ -135,6 +136,7 @@
         </div>
     </div>
 
+    <!-- Canvas -->
 
     <canvas id="canvas" width="720px" height="480px" class="background"></canvas>
 
@@ -151,26 +153,19 @@
     <!-- Game Over loose screen -->
 
     <div id="gameover" class="game_over d-none">
-        <div id="gameover_img" class="game_over"><h1 class="game_over_messege">You Died!</h1></div>
-        
+        <div id="gameover_img" class="game_over">
+            <h1 class="game_over_messege">You Died!</h1>
+        </div>
         <div id="coins_collected" class="coins_collect">
             <p>You collected</p>
             <p id="coin_loose"></p>
             <p>coins from 10</p>
-        </div> 
+        </div>
         <div id="gameover_buttons" class="end_buttons d-none">
             <button onclick="init()">Restart Game</button>
             <button onclick="window.location.reload()">Back to Homepage</button>
         </div>
-        
-        <!-- <img src="./img/9_intro_outro_screens/game_over/game over.png" alt="">-->
-
     </div>
-
-    <!-- Game Over win screen -->
-
-    
-
 
 </body>
 

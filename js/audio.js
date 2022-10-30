@@ -62,7 +62,7 @@ function changeVolume(vol) {
         document.getElementById('on_off').innerHTML = 'Music : ON';
     } else if (vol == 0) {
         document.getElementById('on_off').innerHTML = 'Music : OFF';
-        vol = 1;
+        vol = 0;
     }
 };
 
@@ -72,7 +72,6 @@ function musicOff() {
         changeVolume(0);
         document.getElementById('myRange').value = 0;
     } else {
-
         document.getElementById('on_off').innerHTML = 'Music : OFF';
         changeVolume(0);
         document.getElementById('myRange').value = 0;

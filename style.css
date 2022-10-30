@@ -11,8 +11,6 @@
     display: none !important;
 }
 
-
-
 body {
     margin: 0;
     padding: 0;
@@ -36,12 +34,10 @@ h1 {
     color: #FFDD02;
     text-shadow: 2px 2px 20px rgb(0, 0, 0);
     text-align: center;
-
 }
 
 canvas {
     display: block;
-
 }
 
 .background {
@@ -67,8 +63,9 @@ canvas {
     padding-left: 10px;
     padding-right: 10px;
 }
+
 .control_layer img {
-    width:30px;
+    width: 30px;
     height: auto;
     padding-left: 5px;
 }
@@ -78,12 +75,10 @@ canvas {
     align-items: center;
 }
 
-
-
 /* Menu */
 
 .menubar {
-    
+
     width: 100%;
     height: 40px;
     display: flex;
@@ -91,7 +86,6 @@ canvas {
     align-content: center;
     position: absolute;
     top: 80%;
-
 }
 
 .menubar button {
@@ -121,7 +115,6 @@ canvas {
     justify-content: center;
 }
 
-
 .settings_inner {
     font-family: 'zabars';
     display: flex;
@@ -130,7 +123,6 @@ canvas {
     height: 100%;
     align-items: center;
     justify-content: center;
-    
 }
 
 .settings_br {
@@ -153,7 +145,7 @@ canvas {
 .settings_inner p {
     font-size: 3vw;
     color: #fafa5a;
-    text-shadow: 4px 4px 5px rgb(0, 0, 0);   
+    text-shadow: 4px 4px 5px rgb(0, 0, 0);
     margin: 10px;
 }
 
@@ -162,7 +154,6 @@ canvas {
     height: 5vw !important;
     cursor: pointer;
     padding-top: 10px;
-       
 }
 
 .door:hover {
@@ -177,14 +168,11 @@ canvas {
 }
 
 
-
-
 /* Controls menu*/
 
 .setting_controls {
     display: flex;
     flex-direction: row-reverse;
-    
 }
 
 .phone {
@@ -192,7 +180,7 @@ canvas {
     padding-left: 5px;
 }
 
-.phone img{
+.phone img {
     width: 20vw;
     cursor: pointer;
 }
@@ -209,7 +197,7 @@ canvas {
     justify-content: center;
     position: absolute;
     width: 60vw;
-    height: 60vh;   
+    height: 60vh;
 }
 
 .touch img {
@@ -219,7 +207,7 @@ canvas {
 
 .keyboard {
     width: 50%;
-    
+
 }
 
 .buttons {
@@ -233,7 +221,6 @@ canvas {
 .buttons img {
     width: 3vw;
 }
-
 
 /* Landscape mod */
 
@@ -319,7 +306,6 @@ canvas {
     position: absolute;
     top: 85%;
     width: 70%;
-
 }
 
 .end_buttons button {
@@ -341,6 +327,7 @@ canvas {
 
 .game_over_messege {
     position: absolute;
+    top: 10%;
     display: flex;
     flex-direction: column;
     font-family: 'zabars';
@@ -372,11 +359,10 @@ canvas {
     display: block;
     position: absolute;
     width: 720px;
-    height: 480px; 
+    height: 480px;
 }
 
 .touch_buttons {
-    
     width: 50%;
     height: 50%;
 }
@@ -385,30 +371,25 @@ canvas {
     position: absolute;
     bottom: 0;
     right: 0;
-    
 }
 
 #right_up {
     position: absolute;
     right: 0;
-    top:0;
-    
+    top: 0;
 }
 
 #left_down {
     position: absolute;
     left: 0;
     bottom: 0;
-    
 }
 
 #left_up {
     position: absolute;
     left: 0;
     top: 0;
-    
 }
-
 
 /*Responsive Settings for Smartphones */
 
@@ -418,42 +399,35 @@ canvas {
     }
 
     .overlay {
-        width: 100%;   
+        width: 100%;
     }
 
     .control_layer {
         width: 100%;
         display: none;
     }
-
-
-
 }
 
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
     }
-    .overlay {
 
+    .overlay {
         height: 100vh;
     }
+
     .control_layer {
         width: 100%;
         display: none;
     }
-
 }
 
 /* Landscape mod */
 
 @media only screen and (max-width: 420px) {
-
     #landscape_mode {
         visibility: visible;
         z-index: 5;
     }
-
 }
-
-

@@ -39,58 +39,35 @@ function checkFullscreen() {
 //Keyboard keydown settings
 
 window.addEventListener("keydown", (e) => {
-   if (e.keyCode == '39') {
+   if (e.keyCode == '39')
       keyboard.RIGHT = true;
-   }
-
-   if (e.keyCode == '37') {
+   if (e.keyCode == '37')
       keyboard.LEFT = true;
-   }
-
-   if (e.keyCode == '38') {
+   if (e.keyCode == '38')
       keyboard.UP = true;
-   }
-
-   if (e.keyCode == '40') {
+   if (e.keyCode == '40')
       keyboard.DOWN = true;
-   }
-
-   if (e.keyCode == '32') {
+   if (e.keyCode == '32')
       keyboard.SPACE = true;
-   }
-
-   if (e.keyCode == '27') {
+   if (e.keyCode == '27')
       keyboard.ESC = window.location.reload();
-   }
-
-   if (e.keyCode == '82') {
+   if (e.keyCode == '82')
       keyboard.S = init();
-   }
-
 });
 
 //Keyboard keydup settings
 
 window.addEventListener("keyup", (e) => {
-   if (e.keyCode == '39') {
+   if (e.keyCode == '39')
       keyboard.RIGHT = false;
-   }
-
-   if (e.keyCode == '37') {
+   if (e.keyCode == '37')
       keyboard.LEFT = false;
-   }
-
-   if (e.keyCode == '38') {
+   if (e.keyCode == '38')
       keyboard.UP = false;
-   }
-
-   if (e.keyCode == '40') {
+   if (e.keyCode == '40')
       keyboard.DOWN = false;
-   }
-
-   if (e.keyCode == '32') {
+   if (e.keyCode == '32')
       keyboard.SPACE = false;
-   }
    //Activate to show the pushed keys in Console
    //console.log(e.keyCode);
 });
@@ -102,40 +79,32 @@ function bindButtons() {
       e.preventDefault();
       keyboard.RIGHT = true;
    });
-
    document.getElementById('right_down').addEventListener('touchend', (e) => {
       e.preventDefault();
       keyboard.RIGHT = false;
    });
-
    document.getElementById('right_up').addEventListener('touchstart', (e) => {
       e.preventDefault();
       keyboard.SPACE = true;
    });
-
    document.getElementById('right_up').addEventListener('touchend', (e) => {
       e.preventDefault();
       keyboard.SPACE = false;
    });
-
    document.getElementById('left_down').addEventListener('touchstart', (e) => {
       e.preventDefault();
       keyboard.LEFT = true;
    });
-
    document.getElementById('left_down').addEventListener('touchend', (e) => {
       e.preventDefault();
       keyboard.LEFT = false;
    });
-
    document.getElementById('left_up').addEventListener('touchstart', (e) => {
       e.preventDefault();
       keyboard.UP = true;
    });
-
    document.getElementById('left_up').addEventListener('touchend', (e) => {
       e.preventDefault();
       keyboard.UP = false;
    });
-
 }

@@ -4,7 +4,6 @@ let fullscreen = false;
 function PlayMenuMusic() {
   menu_guitar.play();
   menu_ambient.play();
-
 }
 
 function hideWelcomeWindow() {
@@ -12,13 +11,10 @@ function hideWelcomeWindow() {
   document.getElementById('menubar').classList.remove("d-none");
 }
 
-
 function onStart() {
-
   window.addEventListener("keydown", (e) => {
-    if (e.keyCode == '83') {
+    if (e.keyCode == '83')
       keyboard.S = init();
-    }
   });
 }
 
@@ -27,8 +23,8 @@ function openSettings() {
   document.getElementById('settings').classList.add("settings_menu");
   document.getElementById('menubar').classList.add("d-none");
   menu_click.play();
-
 }
+
 function closeSettings() {
   document.getElementById('settings').classList.add("d-none");
   document.getElementById('settings').classList.remove("settings_menu");
@@ -63,24 +59,22 @@ function allowFullscreen() {
 
 function fullScreen() {
   var full = document.getElementById('canvas');
-
-  if (full.requestFullscreen) {
+  if (full.requestFullscreen) 
     full.requestFullscreen();
-  } else if (full.webkitRequestFullscreen) { /* Safari */
+   else if (full.webkitRequestFullscreen)  /* Safari */
     full.webkitRequestFullscreen();
-  } else if (full.msRequestFullscreen) { /* IE11 */
+   else if (full.msRequestFullscreen)  /* IE11 */
     full.msRequestFullscreen();
-  }
+  
 }
 
 function closeFullscreen() {
-  if (document.exitFullscreen) {
+  if (document.exitFullscreen) 
     document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { /* Safari */
+   else if (document.webkitExitFullscreen)  /* Safari */
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE11 */
+   else if (document.msExitFullscreen)  /* IE11 */
     document.msExitFullscreen();
-  }
 }
 
 function showControlsPhone() {

@@ -1,4 +1,4 @@
-class StatusBarBoss extends DrawableObject{
+class StatusBarBoss extends DrawableObject {
     IMAGES = [
         './img/7_statusbars/Statusbar_boss/vekt/1-removebg-preview.png',
         './img/7_statusbars/Statusbar_boss/vekt/2-removebg-preview.png',
@@ -9,10 +9,10 @@ class StatusBarBoss extends DrawableObject{
         './img/7_statusbars/Statusbar_boss/vekt/7-removebg-preview.png',
         './img/7_statusbars/Statusbar_boss/vekt/8-removebg-preview.png',
         './img/7_statusbars/Statusbar_boss/vekt/9-removebg-preview.png',
-        './img/7_statusbars/Statusbar_boss/vekt/0-removebg-preview.png'       
+        './img/7_statusbars/Statusbar_boss/vekt/0-removebg-preview.png'
     ];
 
-   percentage;
+    percentage;
 
     constructor() {
         super();
@@ -30,35 +30,17 @@ class StatusBarBoss extends DrawableObject{
         this.img = this.imageCache[path];
     }
 
-        resolveImageIndex() {
-            
-            if (this.percentage == 50) {
-                return 1;
-            } else if (this.percentage > 44) {
-                return 1;
-            } else if (this.percentage > 35) {
-                return 2;
-            } else if (this.percentage > 30) {
-                return 3;
-            } else if (this.percentage > 25) {
-                return 4;
-            } else if (this.percentage > 20) {
-                return 5;
-            } else if (this.percentage > 15) {
-                return 6;
-            } else if (this.percentage > 8) {
-                return 7;
-            } else if (this.percentage > 4) {
-                return 8;
-            } else if (this.percentage > 0) {
-                return 9;
-            } else {
-                return 0;
-            }
-        }
-
-
-
-    
-
+    resolveImageIndex() {
+        if (this.percentage == 50) return 1;
+        else if (this.percentage > 44) return 1;
+        else if (this.percentage > 35) return 2;
+        else if (this.percentage > 30) return 3;
+        else if (this.percentage > 25) return 4;
+        else if (this.percentage > 20) return 5;
+        else if (this.percentage > 15) return 6;
+        else if (this.percentage > 8) return 7;
+        else if (this.percentage > 4) return 8;
+        else if (this.percentage > 0) return 9;
+        else return 0;
+    }
 }
