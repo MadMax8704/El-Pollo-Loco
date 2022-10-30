@@ -5,7 +5,7 @@ let keyboard = new Keyboard();
 //Initialize the game
 
 function init() {
-   levelInit();   
+   levelInit();
    StopMenuMusic();
    StartGameMusic();
    bindButtons();
@@ -13,18 +13,20 @@ function init() {
    checkFullscreen();
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
-   document.getElementById('canvas').classList.remove('background');   
+   document.getElementById('canvas').classList.remove('background');
    //Activate to show the Character Infos in Console
-      //console.log('My character is', world.character);
+   //console.log('My character is', world.character);
 }
 
 function hideElements() {
    document.getElementById('control_lay').classList.remove("d-none");
    document.getElementById('touch_overlay').classList.remove("d-none");
    document.getElementById('coin_loose').innerHTML = ``;
+   document.getElementById('menubar').classList.add("d-none");
+   document.getElementById('coins_collected').classList.remove('d-none');
+   document.getElementById('gameover_img').innerHTML = `<h1 class="game_over_messege">You Died!</h1>`;
+   document.getElementById('gameover_buttons').classList.add('d-none');
    document.getElementById('gameover').classList.add('d-none');
-   document.getElementById('gameover_win').classList.add('d-none');
-   document.getElementById('menubar').classList.add("d-none");   
 }
 
 function checkFullscreen() {
@@ -33,24 +35,6 @@ function checkFullscreen() {
    }
 }
 
-
-function StopMenuMusic() {
-
-   menu_guitar.pause();
-   menu_guitar.currentTime = 0;
-   menu_ambient.pause();
-   game_over_win_sound.pause();
-   game_over_win_sound.currentTime = 0;
-   game_over_loose_sound.pause();
-   game_over_loose_sound.currentTime = 0;   
- };
-
- function StartGameMusic() {
-
-   game_ambient.play();
-   game_music.play();
-
- };
 
 //Keyboard keydown settings
 
@@ -77,10 +61,10 @@ window.addEventListener("keydown", (e) => {
 
    if (e.keyCode == '27') {
       keyboard.ESC = window.location.reload();
-   } 
-   
+   }
+
    if (e.keyCode == '82') {
-      keyboard.S =  init();
+      keyboard.S = init();
    }
 
 });
@@ -108,7 +92,7 @@ window.addEventListener("keyup", (e) => {
       keyboard.SPACE = false;
    }
    //Activate to show the pushed keys in Console
-      //console.log(e.keyCode);
+   //console.log(e.keyCode);
 });
 
 //Touch control binding
@@ -144,7 +128,7 @@ function bindButtons() {
       keyboard.LEFT = false;
    });
 
-document.getElementById('left_up').addEventListener('touchstart', (e) => {
+   document.getElementById('left_up').addEventListener('touchstart', (e) => {
       e.preventDefault();
       keyboard.UP = true;
    });
@@ -153,5 +137,5 @@ document.getElementById('left_up').addEventListener('touchstart', (e) => {
       e.preventDefault();
       keyboard.UP = false;
    });
-   
+
 }

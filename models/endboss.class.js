@@ -140,11 +140,8 @@ class Endboss extends MovableObject {
     }
 
     gameOver() {
-        closeFullscreen();
-        this.cons = level1.coins.length;
-        this.consty = 10 - this.cons ;
-        document.getElementById('gameover_win').classList.remove('d-none');
-        document.getElementById('coin_win').innerHTML += this.consty;
+        world.character.gameOverDead("win");
+        
     }
 
 

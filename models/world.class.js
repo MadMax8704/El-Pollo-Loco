@@ -70,11 +70,11 @@ class World {
 
         this.level.enemies.forEach((enemy, i) => {
             if (this.character.isColliding(enemy) ) {
-                if (!this.character.isAboveGround() && !enemy.dead){
+                if (!this.character.isAboveGround() && !enemy.dead && !this.character.isOverEnemy){
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
 
-            }else if(this.character.isAboveGround() && !enemy.dead){
+            }else if(this.character.isAboveGround() && this.character.isOverEnemy && !enemy.dead){
                     enemy.dead = true;
                     enemy.enemyIsDead();
                     

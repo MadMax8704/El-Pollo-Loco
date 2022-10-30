@@ -197,13 +197,24 @@ canvas {
     cursor: pointer;
 }
 
-
-
-.touch_img {
+.touch_buttons {
     position: absolute;
-    padding-top: 5px;
-    width: 70vw;
-    height: 70vh;
+    width: 80vw;
+    height: 80vw;
+}
+
+.touch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 60vw;
+    height: 60vh;   
+}
+
+.touch img {
+    position: absolute;
+    width: 100%;
 }
 
 .keyboard {
@@ -223,6 +234,25 @@ canvas {
     width: 3vw;
 }
 
+
+/* Landscape mod */
+
+#landscape_mode {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #e7673458;
+    z-index: -5;
+    visibility: hidden;
+}
+
+#landscape_mode img {
+    width: 40px;
+}
 
 /* Welcome Window */
 
@@ -252,7 +282,7 @@ canvas {
     cursor: pointer;
 }
 
-/* Game over screen */
+/* Game Over screen */
 
 .game_over {
     display: flex;
@@ -268,7 +298,16 @@ canvas {
     background-image: url("./img/9_intro_outro_screens/start/desert.png");
 }
 
+.game_over {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .game_over img {
+    position: absolute;
     width: 100%;
     height: 100%;
 }
@@ -278,13 +317,12 @@ canvas {
     flex-direction: row;
     justify-content: space-between;
     position: absolute;
-    top: 80%;
-    width: 50%;
+    top: 85%;
+    width: 70%;
 
 }
 
 .end_buttons button {
-    width: 150px;
     height: fit-content;
     padding: 5px;
     font-size: 1.5rem;
@@ -303,21 +341,22 @@ canvas {
 
 .game_over_messege {
     position: absolute;
-    top: 5%;
     display: flex;
     flex-direction: column;
     font-family: 'zabars';
+    border-color: #E76734;
+    text-shadow: 2px 2px 8px rgb(0, 0, 0);
 }
 
 /* Game Over Collected Coins */
 
 .coins_collect {
-    position: inherit;
-    top: 15%;
+    position: absolute;
+    bottom: 10%;
     font-family: 'zabars';
     color: #E76734;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 3rem;
     padding: 0;
 }
 
@@ -402,6 +441,17 @@ canvas {
     .control_layer {
         width: 100%;
         display: none;
+    }
+
+}
+
+/* Landscape mod */
+
+@media only screen and (max-width: 420px) {
+
+    #landscape_mode {
+        visibility: visible;
+        z-index: 5;
     }
 
 }

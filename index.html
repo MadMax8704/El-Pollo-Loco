@@ -46,6 +46,15 @@
         </div>
     </div>
 
+    <!-- Switch to Landscape Modus -->
+
+    <div id="landscape_mode" class="">
+        <div class="welcome_window">
+            <p>Please turn your Phone to Landscape modus!</p>
+            <img src="./img/10_menu/landscape.png" alt="">
+        </div>
+    </div>
+
     <!-- Show Controls on the top of Canvas -->
 
     <div class="control_layer d-none" id="control_lay">
@@ -142,36 +151,25 @@
     <!-- Game Over loose screen -->
 
     <div id="gameover" class="game_over d-none">
-        <img src="./img/9_intro_outro_screens/game_over/game over.png" alt="">
-        <div class="end_buttons">
-            <button onclick="init()">Restart Game</button>
-            <button onclick="window.location.reload()">Back to Homepage</button>
-        </div>
-        <h1 class="game_over_messege">You Died!</h1>
-        <div class="coins_collect">
+        <div id="gameover_img" class="game_over"><h1 class="game_over_messege">You Died!</h1></div>
+        
+        <div id="coins_collected" class="coins_collect">
             <p>You collected</p>
             <p id="coin_loose"></p>
             <p>coins from 10</p>
+        </div> 
+        <div id="gameover_buttons" class="end_buttons d-none">
+            <button onclick="init()">Restart Game</button>
+            <button onclick="window.location.reload()">Back to Homepage</button>
         </div>
+        
+        <!-- <img src="./img/9_intro_outro_screens/game_over/game over.png" alt="">-->
 
     </div>
 
     <!-- Game Over win screen -->
 
-    <div id="gameover_win" class="game_over d-none">
-        <img src="./img/9_intro_outro_screens/game_over/game over.png" alt="">
-        <div class="end_buttons">
-            <button onclick="init()">Restart Game</button>
-            <button onclick="window.location.reload()">Back to Homepage</button>
-        </div>
-        <h1 class="game_over_messege">You Won!</h1>
-        <div class="coins_collect">
-            <p>You collected</p>
-            <p id="coin_win"></p>
-            <p>coins from 10</p>
-        </div>
-
-    </div>
+    
 
 
 </body>

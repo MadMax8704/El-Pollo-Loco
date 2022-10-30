@@ -14,6 +14,7 @@ class Character extends MovableObject {
     speed = 3;
     coins = 0;
     bottles = 0;
+    isOverEnemy = false;
 
 
     IMAGES_IDLE = [
@@ -123,6 +124,12 @@ class Character extends MovableObject {
 
                 //Sprunghöhe
                 this.jump();
+                setTimeout(() => {
+                    this.isOverEnemy = true;
+                }, 1000);
+                setTimeout(() => {
+                    this.isOverEnemy = false;
+                }, 1200);
 
             }
 
@@ -166,7 +173,6 @@ class Character extends MovableObject {
     jump() {
         this.speedY = 15;
         jump_sound.play();
-
     }
 
 
@@ -193,13 +199,31 @@ class Character extends MovableObject {
 
     }
 
-    gameOverDead() {
-        clearInterval(this.pepe_dies);
-        closeFullscreen();
+    gameOverDead(x) {
         document.getElementById('gameover').classList.remove('d-none');
+        if (x == "win") {
+            document.getElementById('gameover_img').innerHTML = `<h1 class="game_over_messege">You Win!</h1>`;
+            console.log("win");
+        }
+        clearInterval(this.pepe_dies);
         this.cons = level1.coins.length;
         this.consty = 10 - this.cons;
         document.getElementById('coin_loose').innerHTML += this.consty;
+        if (fullscreen) {
+            closeFullscreen();
+        };
+
+
+        setTimeout(() => {
+            document.getElementById('gameover_img').innerHTML = ``;
+            document.getElementById('gameover_img').innerHTML = `<img src="./img/9_intro_outro_screens/game_over/game over.png" alt="">`;
+            document.getElementById('coins_collected').classList.add('d-none');
+        }, 3000);
+
+        setTimeout(() => {
+            document.getElementById('gameover_buttons').classList.remove('d-none');
+        }, 5000);
+
     }
 
 }
