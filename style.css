@@ -147,6 +147,7 @@ canvas {
     color: #fafa5a;
     text-shadow: 4px 4px 5px rgb(0, 0, 0);
     margin: 10px;
+    text-align: center;
 }
 
 .door {
@@ -176,6 +177,9 @@ canvas {
 }
 
 .phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
     padding-left: 5px;
 }
@@ -219,7 +223,7 @@ canvas {
 }
 
 .buttons img {
-    width: 3vw;
+    height: 3vw;
 }
 
 /* Landscape mod */
@@ -255,18 +259,52 @@ canvas {
 }
 
 .welcome_window {
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-style: ridge;
     padding: 10px;
-    background-color: azure;
     text-align: center;
+    font-family: 'zabars';
+    font-size: 5vw;
+    background-image: url(./img/10_menu/wood.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
 }
 
 .welcome_window button {
     cursor: pointer;
+    background-color: #FFDD02;
+    border-color: #E76734;
+    border-radius: 6px;
+    font-family: 'zabars';
+    text-shadow: 2px 2px 8px rgb(0, 0, 0);
+    font-size: 4vw;
+    margin-top: 5%;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.welcome_window img {
+    margin-top: 5%;
+}
+
+.welcome_window p {
+    padding: 10%;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #fafa5a;
+    text-shadow: 4px 4px 5px rgb(0, 0, 0);
+}
+
+.welcome_window button:hover {
+    transform: scale(1.2);
 }
 
 /* Game Over screen */
@@ -406,6 +444,10 @@ canvas {
         width: 100%;
         display: none;
     }
+
+    .welcome_window button {
+        margin-top: 5%;
+    }
 }
 
 @media only screen and (max-height: 480px) {
@@ -429,5 +471,9 @@ canvas {
     #landscape_mode {
         visibility: visible;
         z-index: 5;
+    }
+
+    .welcome_window p {
+        text-shadow: 2px 2px 8px rgb(233, 11, 11);
     }
 }
