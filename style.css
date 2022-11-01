@@ -11,6 +11,10 @@
     display: none !important;
 }
 
+.bgr {
+    background-color: #E76734;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -130,7 +134,8 @@ canvas {
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 100vw;
+    width: 90vw;
+    height: 100vh;
 }
 
 .settings_inner h2 {
@@ -271,8 +276,8 @@ canvas {
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 90vh;
 }
 
 .welcome_window button {
@@ -377,7 +382,7 @@ canvas {
 
 .coins_collect {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     font-family: 'zabars';
     color: #E76734;
     text-align: center;
@@ -396,8 +401,8 @@ canvas {
 .overlay {
     display: block;
     position: absolute;
-    width: 720px;
-    height: 480px;
+    width: 100vw;
+    height: 100vh;
 }
 
 .touch_buttons {

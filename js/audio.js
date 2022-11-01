@@ -52,8 +52,10 @@ boss_beep_sound.volume = 1;
 let boss_hit_sound = new Audio('./audio/boss_hit.mp3');
 boss_hit_sound.volume = 1;
 
-// Music volume scrollbar setting
-
+/**
+ * Sets the music volume with the slider in the main menu
+ * and also in the game
+*/
 function changeVolume(vol) {
     game_music.volume = vol;
     menu_guitar.volume = vol;
@@ -64,6 +66,10 @@ function changeVolume(vol) {
         vol = 0;
     }
 };
+
+/**
+ * Turns the volume to zero if music objekt clicked on
+ */
 
 function musicOff() {
     if (vol == 1) {
@@ -83,8 +89,9 @@ function musicOff() {
     }
 };
 
-// Start-Stop Music and Sounds in Game
-
+/**
+ * Stops and sets to startpoints all music if the game ends
+ */
 function StopMenuMusic() {
     menu_guitar.pause();
     menu_guitar.currentTime = 0;
@@ -95,6 +102,9 @@ function StopMenuMusic() {
     game_over_loose_sound.currentTime = 0;
 };
 
+/**
+ * Starts the musik & th background sounds if the games started
+ */
 function StartGameMusic() {
     game_ambient.play();
     game_music.play();

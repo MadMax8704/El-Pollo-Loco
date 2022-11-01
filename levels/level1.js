@@ -1,6 +1,9 @@
 let level1;
-function levelInit() {
 
+/**Creates tho objects ont the canvas
+ * It will be enemies,clouds, background, coins and bottles created
+ */
+function levelInit() {
     level1 = new Level(
         createLevelEnemies(),
         createLevelClouds(),

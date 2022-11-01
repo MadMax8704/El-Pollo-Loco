@@ -22,6 +22,9 @@ class StatusBarBottlesQuantity extends DrawableObject {
         this.setPercentage(0);
     }
 
+    /**if a bottle throwed u must wait 5 seconds until you can throw an other one
+     * it must loads also if you take your first bottle
+     */
     bottleTimer() {
         this.indicator = 0;
         this.timer = setInterval(() => {
@@ -46,7 +49,7 @@ class StatusBarBottlesQuantity extends DrawableObject {
     }
 
     resolveImageIndex() {
-        if (this.percentage == 0) return 5;
+        if (this.percentage == 0) return 0;
         else if (this.percentage == 1) return 4;
         else if (this.percentage == 2) return 3;
         else if (this.percentage == 3) return 2;

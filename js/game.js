@@ -2,8 +2,16 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
-//Initialize the game
 
+
+/**
+ * Initialize the game
+ * Loads the objects from the level
+ * Stops the music if the game restarted and sets those to beginning
+ * Binds the touchoverlay screen to control the game on smartphone
+ * Checks if the game starts on full scerren or windowed
+ * Creates the canvas and the world objects
+ */
 function init() {
    levelInit();
    StopMenuMusic();

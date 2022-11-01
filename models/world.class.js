@@ -34,39 +34,78 @@ class World {
         }, 100);
     }
 
+    /**
+     * it checks if you have bottle to throw
+     * if the bottle statusbar is comletly yellow you have nothing to throw
+     */
     checkThrowobjects() {
-        if (this.statusBarBottlesQuantity.indicator < 5) {
+        if (this.statusBarBottlesQuantity.indicator < 5)
             this.keyboard.SPACE = false;
-        }
         else if (this.keyboard.SPACE) {
             if (this.character.bottles > 0) {
-                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+                let bottle = new ThrowableObject(this.character.x + 10, this.character.y + 110);
                 this.throwableObjects.push(bottle);
                 this.character.bottles--;
                 this.statusBarBottles.setPercentage(this.character.bottles);
-                this.statusBarBottlesQuantity.bottleTimer();
+                this.checkFirstBottle();
             }
         }
     }
 
+    checkFirstBottle() {
+        if (!this.character.bottles == 0)
+            this.statusBarBottlesQuantity.bottleTimer();
+        else
+            this.statusBarBottlesQuantity.setPercentage(0);
+    }
+
+    /**
+     * checks the collosions to take items and hit enemies or the boss
+     * 
+     */
     checkCollosions() {
+        this.takeItems();
+        this.collosionEnemies();
+    }
 
-        //Bottle Endboss Collosion (hit)
+    takeItems() {
+        this.takeCoins();
+        this.takeBottles();
+    }
 
-        this.throwableObjects.forEach(bottle => {
-            if (this.endboss.isColliding(bottle)) {
-                bottle.bottleHit();
-                this.endboss.bottle_hit = true;
-                bottle_splash_sound.play();
-                this.endboss.energy--;
-                //Activate to show the boss energy in Console
-                //console.log(this.statusBarBoss.percentage);
-                this.statusBarBoss.setPercentage(this.endboss.energy);
+    takeCoins() {
+        this.level.coins.forEach((coins, i) => {
+            if (this.character.isColliding(coins)) {
+                this.character.takeCoin();
+                this.level.coins.splice(i, 1);
+                coin_sound.play();
+                this.statusBarCoins.setPercentage(this.character.coins);
             }
         });
+    }
 
-        //Enemy Character Collosion (hit)
+    takeBottles() {
+        this.level.bottles.forEach((bottles, i) => {
+            if (this.character.isColliding(bottles)) {
+                this.character.takeBottle();
+                this.level.bottles.splice(i, 1);
+                bottle_take_sound.play();
+                this.throwableObjects.bottle++;
+                this.statusBarBottles.setPercentage(this.character.bottles);
+                if (this.character.bottles == 1) {
+                    this.statusBarBottlesQuantity.bottleTimer();
+                }
+            }
+        });
+    }
 
+    collosionEnemies() {
+        this.characterEnemyCollosion();
+        this.characterEndbossCollosion();
+        this.bottleHitEndboss();
+    }
+
+    characterEnemyCollosion() {
         this.level.enemies.forEach((enemy, i) => {
             if (this.character.isColliding(enemy)) {
                 if (!this.character.isAboveGround() && !enemy.dead && !this.character.isOverEnemy) {
@@ -80,34 +119,25 @@ class World {
             if (this.character.isDead())
                 this.character.pepeDies();
         });
+    }
 
-        //Endboss Character Collosion (hit)
-
+    characterEndbossCollosion() {
         if (this.character.isColliding(this.endboss)) {
             this.character.hit();
             this.statusBar.setPercentage(this.character.energy);
         };
+    }
 
-        //Coin Character Collosion (take)
-
-        this.level.coins.forEach((coins, i) => {
-            if (this.character.isColliding(coins)) {
-                this.character.takeCoin();
-                this.level.coins.splice(i, 1);
-                coin_sound.play();
-                this.statusBarCoins.setPercentage(this.character.coins);
-            }
-        });
-
-        //Bottle Character Collosion (take)
-
-        this.level.bottles.forEach((bottles, i) => {
-            if (this.character.isColliding(bottles)) {
-                this.character.takeBottle();
-                this.level.bottles.splice(i, 1);
-                bottle_take_sound.play();
-                this.throwableObjects.bottle++;
-                this.statusBarBottles.setPercentage(this.character.bottles);
+    bottleHitEndboss() {
+        this.throwableObjects.forEach(bottle => {
+            if (this.endboss.isColliding(bottle)) {
+                bottle.bottleHit();
+                this.endboss.bottle_hit = true;
+                bottle_splash_sound.play();
+                this.endboss.energy--;
+                //Activate to show the boss energy in Console
+                //console.log(this.statusBarBoss.percentage);
+                this.statusBarBoss.setPercentage(this.endboss.energy);
             }
         });
     }

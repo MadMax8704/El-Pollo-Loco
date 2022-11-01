@@ -14,6 +14,7 @@ class Character extends MovableObject {
     speed = 3;
     coins = 0;
     bottles = 0;
+    world;
     isOverEnemy = false;
 
 
@@ -81,11 +82,6 @@ class Character extends MovableObject {
         './img/2_character_pepe/4_hurt/H-43.png'
     ];
 
-
-    world;
-
-
-
     constructor() {
         super().loadImage('./img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_IDLE);
@@ -97,12 +93,15 @@ class Character extends MovableObject {
         this.applyGravity();
         this.animate();
     }
-
     animate() {
         setInterval(() => this.moveCharacter(), 1000 / 60);
         setInterval(() => this.playCharacter(), 72);
     }
-
+    
+    /**
+     * animating the chracter behavior
+     * the character left, right, jump moves
+     */
     moveCharacter() {
         walking_sound.pause();
         if (this.canMoveRight())
@@ -149,6 +148,10 @@ class Character extends MovableObject {
         jump_sound.play();
     }
 
+    /**
+     * animates the character 
+     * hurt and dead images
+     */
     playCharacter() {
         if (this.isDead())
             this.dead();
